@@ -4,32 +4,69 @@
 }
 
 body{
-  background-color: #142c20;
+  background-color: #65bb90;
   display: flex;
   justify-content: center;  
 }
 .bgc{
   
   width: 80vw;
-  height: 95vh;
+  /* height: 94vh; */
   background-color: #317050;
 }
 
 header{
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   border-radius: 2px;
   width: 80vw;
-  height: 5vh;
+  height: 50px;
   
   background-color: #43B078;
-  box-shadow: 2px 5px 5px 5px rgba(0, 0, 0, 0.877);
 }
 
 h1{  
   padding-left: 20px;
-  font-size: 4vh;
+  font-size: 30px;
   color: rgb(116, 10, 31);
   text-shadow:2px 2px  rgba(0, 0, 0, 0.253) ;
-font-family: 'Arial Narrow Bold', sans-serif;}
+  font-family: 'Arial Narrow Bold', sans-serif;}
 
+
+.Callendar{
+  height: 94vh;
+  width: 150px;
+  background-color: rgba(0, 0, 0, 0.267);
+}
+
+
+
+.dayCallendar{
+  display: flex;
+  padding: 10px 7px;
+  border: 1px solid green;
+  cursor: pointer;
+  list-style: none;
+}
+.dayCallendar strong{
+  font-size: 20px;
+  color: #000;
+}
+
+.tomato{
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  background-image: url('../public/assets/images/tomato.png');
+  background-size: contain;
+  font-size: 40px;
+}
+
+.seed{
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  background-image: url('../public/assets/images/seed.png');
+  background-size: contain;
+  font-size: 40px;
+}
