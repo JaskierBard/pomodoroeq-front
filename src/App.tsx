@@ -1,6 +1,7 @@
 import React from 'react';
 import { Callendar } from './components/Calendar/callendar';
 import { Clock } from './components/Clock/clock';
+import { Equipment } from './components/Equipment/equipment';
 
 
 export const App = () => {
@@ -13,8 +14,7 @@ export const App = () => {
     <>
       <header>
         <h1>PomodoroEq</h1>
-        <div className='tomato'>0</div>
-        <div className='seed'>0</div>
+        <Equipment></Equipment>
       </header>
 
       <div className='bgc'>
