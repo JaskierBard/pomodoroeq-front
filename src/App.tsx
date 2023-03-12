@@ -1,33 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import {TestInterface} from 'types';
-import './App.css';
+import { Callendar } from './components/Calendar/callendar';
+import { Clock } from './components/Clock/clock';
+import { Equipment } from './components/Equipment/equipment';
 
 
-function App() {
+export const App = () => {
+// const onPause = () => {
+  
+// }
 
-  const foobar: TestInterface = {
-    x: 123,
-  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <h1>PomodoroEq</h1>
+        <Equipment></Equipment>
       </header>
-    </div>
+
+      <div className='bgc'>
+        <Clock></Clock>    
+        <Callendar></Callendar>    
+        
+
+      </div>
+      
+      
+    </>
   );
 }
 
-export default App;
