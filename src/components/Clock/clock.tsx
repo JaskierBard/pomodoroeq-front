@@ -4,8 +4,7 @@ import Countdown, { calcTimeDelta, zeroPad } from 'react-countdown';
 
 
 export const Clock = () => {
-  const learningTime = (Date.now() +1000  * 60 * 25)
-
+  const learningTime = (Date.now() +1000  * 60 * 25);
   const [pause, setPause] = useState<boolean>(true);
   const [timeLeft, setTimeLeft] = useState<number>(0);
 
@@ -18,18 +17,24 @@ export const Clock = () => {
   }
 
   const renderer = ({completed, api}: ClockInterface) => {
+    const minutes = zeroPad(calcTimeDelta(learningTime -  timeLeft).minutes)
+    const seconds = zeroPad(calcTimeDelta(learningTime -  timeLeft).seconds)
+
 
     if (!completed) {
+      document.title = ((minutes).toString() + ' minutes left');
+
       if(!pause)  {
-        api.start()
-        return <span>{zeroPad(calcTimeDelta(learningTime -  timeLeft).minutes)}:{zeroPad(calcTimeDelta( learningTime -  timeLeft).seconds)}</span>;
+        api.start();
+        return <span>{minutes}:{seconds}</span>;
   
       } else {
-        api.pause()
-        return <span>{zeroPad(calcTimeDelta((learningTime -  timeLeft)).minutes)}:{zeroPad(calcTimeDelta((learningTime -  timeLeft)).seconds)}</span>;
+        api.pause();
+        return <span>{minutes}:{seconds}</span>;
       }
 
     } else {
+      window.alert('Time is out!')
       return <span>Time is out!</span>;
     };
   };

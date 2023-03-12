@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { SingleDay } from "./singleDay";
 
 export const Callendar = () => {
     const [day, setDay] = useState<string[]>([]);
@@ -19,6 +20,6 @@ export const Callendar = () => {
 }, []);
 
 return <ul className='Callendar'>
-{day.map((item, index) => <li className='dayCallendar' key={index}><strong>{item}</strong></li>)}
+  {day.map((item, index) => (<SingleDay item={item} index={index}/>))}
 </ul>
 }
