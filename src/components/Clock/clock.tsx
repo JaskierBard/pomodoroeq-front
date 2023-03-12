@@ -1,61 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {ClockInterface} from 'types'
 import Countdown, { calcTimeDelta, zeroPad } from 'react-countdown';
 
 
 export const Clock = () => {
-    const [pause, setPause] = useState<boolean>(true);
-    const [dateStart, setDateStart] = useState<number>(Date.now()+ (1000  * 60 * 25));
+  const learningTime = (Date.now() +1000  * 60 * 25)
 
-    const update = (Date.now()+ (1000  * 60 * 25)) - dateStart
-    const learningTime = Date.now() + (1000  * 60 * 25)
+  const [pause, setPause] = useState<boolean>(true);
+  const [timeLeft, setTimeLeft] = useState<number>(0);
 
+  const start = () => {
+    setTimeLeft(timeLeft)
+  }
+
+  const tick = () => {
+    setTimeLeft(timeLeft + 1000)
+  }
+
+  const renderer = ({completed, api}: ClockInterface) => {
+
+    if (!completed) {
+      if(!pause)  {
+        api.start()
+        return <span>{zeroPad(calcTimeDelta(learningTime -  timeLeft).minutes)}:{zeroPad(calcTimeDelta( learningTime -  timeLeft).seconds)}</span>;
   
+      } else {
+        api.pause()
+        return <span>{zeroPad(calcTimeDelta((learningTime -  timeLeft)).minutes)}:{zeroPad(calcTimeDelta((learningTime -  timeLeft)).seconds)}</span>;
+      }
 
-    useEffect(() => {
-        setDateStart(update)
+    } else {
+      return <span>Time is out!</span>;
+    };
+  };
 
-
-  }, [pause]);
-
- 
-
-    const renderer = ({completed, api}: ClockInterface) => {
-      
-
-        if (!completed) {
-          if(!pause)  {
-            api.start()
-            // console.log(dateStart)
-            return <span>{zeroPad(calcTimeDelta(dateStart).minutes)}:{zeroPad(calcTimeDelta(dateStart).seconds)}</span>;
-
-  
-          } else {
-            api.pause()
-            console.log(dateStart)
-
-            return <span>{zeroPad(calcTimeDelta(update).minutes)}:{zeroPad(calcTimeDelta(update).seconds)}</span>;
-
-  
-          }
-        } else {
-          return <span>Time is out!</span>;
-
-        
-        }
-      };
-
-
-    
-    
-      return <>
-        <div className='clock'>
-          <Countdown date={learningTime} renderer={renderer}  autoStart={false} controlled={false}></Countdown>
-          <button onClick={() =>setPause(!pause)}>Click!</button>
-        </div>
-      </>
-      
-    
-
+  return <>
+    <div className='clock'>
+      <Countdown date={learningTime} renderer={renderer} onStart={start} onTick={tick} autoStart={false} controlled={false}></Countdown>
+      <button onClick={() =>setPause(!pause)}>Click!</button>
+      <button onClick={() =>setTimeLeft(0)}>Reset</button>
+    </div>
+  </>
 }
 
