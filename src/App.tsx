@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Callendar } from './components/Calendar/callendar';
-import { Clock } from './components/Clock/clock';
+import { Clock } from './components/Clock/Clock';
 import { Equipment } from './components/Equipment/equipment';
 
 

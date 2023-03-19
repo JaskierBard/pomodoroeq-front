@@ -1,6 +1,11 @@
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
+  font-family: "Akzidenz Grotesk BQ Medium", sans-serif;
+  color: #f1f1f1ad;
+  
+
 }
 
 body{
@@ -27,15 +32,14 @@ header{
 h1{  
   padding-left: 20px;
   font-size: 30px;
-  color: rgb(116, 10, 31);
-  text-shadow:2px 2px  rgba(0, 0, 0, 0.253) ;
-  font-family: 'Arial Narrow Bold', sans-serif;}
-
+  color: rgb(160, 40, 64);
+  text-shadow:2px 2px  rgba(0, 0, 0, 0.582) ;
+}
 
 .Callendar{
   height: 94vh;
   width: 150px;
-  background-color: rgba(0, 0, 0, 0.267);
+  background-color: rgba(0, 0, 0, 0.637);
 }
 
 .dayCallendar:first-child{
@@ -57,7 +61,6 @@ h1{
   justify-content:start;
 
   font-size: 20px;
-  color: #000;
 }
 
 .tomato{
@@ -78,24 +81,11 @@ h1{
   font-size: 40px;
 }
 
-.clock{
-  position: absolute;
-  margin-left: 37vw;
-  margin-top: 10vh;
-  display: flex;
-  width: 340px;
-  background-color: rgb(76, 109, 109);
-  justify-content: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 90px;
-  font-weight: bold;
-
-}
 .dayCallendar div {
   position: absolute;
   display: flex;
   /* justify-content:start; */
-  background-color: #00200746;
+  background-color: #286847;
   width: 150px;
   height: 30px;
   margin-top: 30px;
