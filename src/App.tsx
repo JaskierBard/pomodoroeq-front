@@ -1,42 +1,33 @@
 import React, { useState } from 'react';
+import {Route, Routes} from "react-router-dom";
+
 import { Callendar } from './components/Calendar/callendar';
 import { Clock } from './components/Clock/Clock';
 import { Equipment } from './components/Equipment/equipment';
+import { Header } from './components/Header/Header';
+import { LogIn } from './components/LogIn/LogIn';
+import { Registration } from './components/Registration/Registration';
+
 
 
 export const App = () => {
-  const [isLogged, setIsLogged] = useState<boolean>(true);
 
-  if (isLogged === true) {
-    return (
-      <>
-        <header>
-          <h1>PomodoroEq</h1>
-          <Equipment/>
-          <button onClick={() => setIsLogged(false)}>Sign Out</button>
-        </header>
-  
-        <div className='bgc'>
-          <Clock/>    
-          <Callendar/>    
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <header>
-          <h1>PomodoroEq</h1>
-          <button onClick={() => setIsLogged(true)}>Sign In</button>
-        </header>
-  
-        <div className='bgc'>
-          <Clock/>    
-        </div>
-      </>
-    );
-  }
+  return (
+    <>  
+        <Header/>
+        <Routes>
+            <Route path="/callendar" element={<Callendar/>}/>
+            <Route path="/registration" element={<Registration/>}/>
+            <Route path="/login" element={<LogIn/>}/>
 
+
+        </Routes>
+        <div className='bgc'>
+            {/* <Clock/> */}
+        </div>
+
+    </>
+);
 
 }
 
