@@ -1,36 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {ClockInterface} from 'types'
-import Countdown, { calcTimeDelta, zeroPad } from 'react-countdown';
+import Countdown, { zeroPad } from 'react-countdown';
 
 
 export const Clock = () => {
-  const learningTime = (Date.now() +1000  * 60 * 25);
-  const [pause, setPause] = useState<boolean>(true);
-  const [timeLeft, setTimeLeft] = useState<number>(0);
-
-  const start = () => {
-    setTimeLeft(timeLeft)
-  }
-
-  const tick = () => {
-    setTimeLeft(timeLeft + 1000)
-  }
-
-  const renderer = ({completed, api}: ClockInterface) => {
-    const minutes = zeroPad(calcTimeDelta(learningTime -  timeLeft).minutes)
-    const seconds = zeroPad(calcTimeDelta(learningTime -  timeLeft).seconds)
-
+  const renderer = ({completed, minutes, seconds, api}: ClockInterface) => {
 
     if (!completed) {
-      document.title = ((minutes).toString() + ' minutes left');
-
-      if(!pause)  {
-        api.start();
-        return <span>{minutes}:{seconds}</span>;
-  
+      if (api.isPaused() || api.isStopped()) {
+        return <>
+          <span>{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+          <button onClick={() => api.start()}>Start</button>
+          <button onClick={() => api.stop()}>Reset</button>
+        </> 
       } else {
-        api.pause();
-        return <span>{minutes}:{seconds}</span>;
+        return <>
+          <span>{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+          <button onClick={() => api.pause()}>Pause</button>
+          <button onClick={() => api.stop()}>Reset</button>
+        </> 
       }
 
     } else {
@@ -41,9 +29,11 @@ export const Clock = () => {
 
   return <>
     <div className='clock'>
-      <Countdown date={learningTime} renderer={renderer} onStart={start} onTick={tick} autoStart={false} controlled={false}></Countdown>
-      <button onClick={() =>setPause(!pause)}>Click!</button>
-      <button onClick={() =>setTimeLeft(0)}>Reset</button>
+      <Countdown 
+        date={Date.now() + 1000  * 60 * 25}
+        renderer={renderer}
+        autoStart={false}
+      ></Countdown>
     </div>
   </>
 }

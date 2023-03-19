@@ -94,7 +94,7 @@ h1{
 .dayCallendar div {
   position: absolute;
   display: flex;
-  justify-content:start;
+  /* justify-content:start; */
   background-color: #00200746;
   width: 150px;
   height: 30px;

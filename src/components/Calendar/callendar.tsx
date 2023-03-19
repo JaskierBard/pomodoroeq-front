@@ -4,11 +4,12 @@ import { SingleDay } from "./singleDay";
 export const Callendar = () => {
     const [day, setDay] = useState<string[]>([]);
 
+ 
+
+  useEffect(() => {
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
-
-  useEffect(() => {
 
     const days = []
       for (let i = 0; i < 14; i++) {
@@ -20,6 +21,6 @@ export const Callendar = () => {
 }, []);
 
 return <ul className='Callendar'>
-  {day.map((item, index) => (<SingleDay item={item} index={index}/>))}
+  {day.map((item, index) => (<SingleDay key={index} item={item} />))}
 </ul>
 }
