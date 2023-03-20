@@ -3,7 +3,7 @@
   padding: 0;
   user-select: none;
   font-family: "Akzidenz Grotesk BQ Medium", sans-serif;
-  color: #f1f1f1ad;
+  /* color: #f1f1f1ad; */
   
 
 }
@@ -130,7 +130,7 @@ h1{
 }
 
 
-button{
+/* button{
   margin-top: 20px;
   margin-right: 5px;
   background-color: #286847;
@@ -146,9 +146,9 @@ width: 110px;
 text-align: center;
 transition: transform 150ms, box-shadow 150ms;
 
-}
+} */
 
-button:hover {
+/* button:hover {
 box-shadow: rgba(0, 0, 0, .35) 0 3px 9px 0;
 transform: translateY(-2px);
-}
+} */

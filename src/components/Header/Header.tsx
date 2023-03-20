@@ -10,6 +10,8 @@ export const Header = () => {
         <header>
         <h1>PomodoroEq</h1>
         <NavLink  to="/callendar">Callendar</NavLink>
+        <NavLink  to="/history">History</NavLink>
+
         <NavLink  to="/registration">Sign up</NavLink>
         <NavLink  to="/login">Log in</NavLink>
       </header>
