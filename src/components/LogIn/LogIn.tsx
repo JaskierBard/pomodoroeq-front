@@ -1,13 +1,14 @@
 import React, { FormEvent, useState } from "react";
+import { Callendar } from "../Calendar/callendar";
+import { Clock } from "../Clock/Clock";
 
 export const LogIn = () => {
     const [form, setForm] = useState<any>({
         name: '',
-        count: 0,
+        password: '',
     });
 
-    const [loading, setLoading] = useState<boolean>(false);
-    const [resultInfo, setResultInfo] = useState<string | null>(null)
+    const [id, setId] = useState<string | null>(null)
 
     const updateForm = (key: string, value:any) => {
         setForm((form: any) => ({
@@ -19,10 +20,8 @@ export const LogIn = () => {
     const sendForm = async(e: FormEvent) => {
         e.preventDefault();
 
-        setLoading(true);
-
         try {
-            const res = await fetch(`http://localhost:3001/gift`, {
+            const res = await fetch(`http://localhost:3001/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,23 +29,25 @@ export const LogIn = () => {
             body: JSON.stringify(form),
         });
         const data = await res.json();
-        setResultInfo(`${data.name} added with ID ${data.id}`);
+        setId(`${data.user}`);
         } finally {
-            setLoading(false)
-
+            // setLoading(false)
         }
     }
 
 
-    if (resultInfo !==null) {
-        return <div>
-            <p><strong>{resultInfo}</strong></p>
-            <button onClick={() => setResultInfo(null)}>Add another one</button>
-        </div>
+    if (id !==null) {
+
+        return <>
+        
+        <Clock/>
+        <Callendar/>
+
+        </> 
     }
 
     return <form onSubmit={sendForm}>
-        <h1>Login</h1>
+        <h1>Log in</h1>
         <p>
         <label>
             Name: <br/>
@@ -61,7 +62,7 @@ export const LogIn = () => {
         <label>
             Password: <br/>
             <input 
-                type="password" 
+                type="current-password" 
                 value={form.password} 
                 onChange={e => updateForm('password',e.target.value)}
             />

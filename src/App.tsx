@@ -17,16 +17,16 @@ export const App = () => {
     <>  
         <Header/>
         <Routes>
-            <Route path="/callendar" element={<Callendar/>}/>
+            {/* <Route path="/callendar" element={<Callendar/>}/> */}
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/login" element={<LogIn/>}/>
-            <Route path="/history" element={<HistoryCalendar/>}/>
+            {/* <Route path="/history" element={<HistoryCalendar/>}/> */}
 
 
 
         </Routes>
         <div className='bgc'>
-            {/* <Clock/> */}
+            <Clock/>
         </div>
 
     </>

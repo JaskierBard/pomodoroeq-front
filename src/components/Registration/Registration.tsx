@@ -1,9 +1,11 @@
 import React, { FormEvent, useState } from "react";
+import { LogIn } from "../LogIn/LogIn";
 
 export const Registration = () => {
     const [form, setForm] = useState<any>({
         name: '',
-        count: 0,
+        mail: '',
+        password: '',
     });
 
     const [loading, setLoading] = useState<boolean>(false);
@@ -22,7 +24,7 @@ export const Registration = () => {
         setLoading(true);
 
         try {
-            const res = await fetch(`http://localhost:3001/gift`, {
+            const res = await fetch(`http://localhost:3001/user/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,8 +42,10 @@ export const Registration = () => {
 
     if (resultInfo !==null) {
         return <div>
-            <p><strong>{resultInfo}</strong></p>
-            <button onClick={() => setResultInfo(null)}>Add another one</button>
+                        <strong style={{backgroundColor: "yellow"}}>Account was created!</strong>
+
+            <LogIn/>
+            <strong style={{backgroundColor: "green"}}> You can log now!</strong>
         </div>
     }
 
@@ -63,7 +67,7 @@ export const Registration = () => {
             <input 
                 type="email" 
                 value={form.email} 
-                onChange={e => updateForm('count',e.target.value)}
+                onChange={e => updateForm('mail',e.target.value)}
             />
         </label>
         </p>
@@ -71,7 +75,7 @@ export const Registration = () => {
         <label>
             Password: <br/>
             <input 
-                type="password" 
+                type="current-password" 
                 value={form.password} 
                 onChange={e => updateForm('password',e.target.value)}
             />
