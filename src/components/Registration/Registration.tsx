@@ -24,7 +24,7 @@ export const Registration = () => {
         setLoading(true);
 
         try {
-            const res = await fetch(`http://localhost:3001/user/create`, {
+            const res = await fetch(`http://localhost:3001/user/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

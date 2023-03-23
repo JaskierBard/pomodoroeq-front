@@ -8,7 +8,8 @@ export const Header = () => {
   return (
     <>
         <header>
-        <h1>PomodoroEq</h1>
+                <NavLink  to="/"><h1>PomodoroEq</h1></NavLink>
+
         {/* <NavLink  to="/callendar">Callendar</NavLink> */}
         {/* <NavLink  to="/history">History</NavLink> */}
 

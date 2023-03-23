@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from "react";
 import { Callendar } from "../Calendar/callendar";
 import { Clock } from "../Clock/Clock";
+import { Equipment } from "../Equipment/Equipment";
 
 export const LogIn = () => {
     const [form, setForm] = useState<any>({
@@ -40,8 +41,9 @@ export const LogIn = () => {
 
         return <>
         
-        <Clock/>
+        {/* <Clock/> */}
         <Callendar/>
+        <Equipment/>
 
         </> 
     }
