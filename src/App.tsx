@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Route, Routes} from "react-router-dom";
+import { Admin } from './components/Admin/admin';
 
 import { Callendar } from './components/Calendar/callendar';
 import { Clock } from './components/Clock/Clock';
@@ -12,17 +13,19 @@ import { Registration } from './components/Registration/Registration';
 
 export const App = () => {
 
+const [auth, setAuth] = useState<boolean>(false);
+
+
+    
   return (
     <>  
         <Header/>
         <Routes>
-            {/* <Route path="/callendar" element={<Callendar/>}/> */}
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/login" element={<LogIn/>}/>
-            {/* <Route path="/history" element={<HistoryCalendar/>}/> */}
+            <Route path="/admin" element={<Admin/>}/>
 
-
-
+            
         </Routes>
         <div className='bgc'>
             <Clock/>

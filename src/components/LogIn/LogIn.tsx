@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { Admin } from "../Admin/admin";
 import { Callendar } from "../Calendar/callendar";
 import { Clock } from "../Clock/Clock";
 import { Equipment } from "../Equipment/Equipment";
@@ -41,15 +42,13 @@ export const LogIn = () => {
 
         return <>
         
-        {/* <Clock/> */}
-        <Callendar/>
-        <Equipment/>
-
+        <Admin/>
+        <button>Logout</button>
         </> 
     }
 
     return <form onSubmit={sendForm}>
-        <h1>Log in</h1>
+        <h1>Login</h1>
         <p>
         <label>
             Name: <br/>
