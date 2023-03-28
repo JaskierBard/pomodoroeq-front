@@ -1,11 +1,17 @@
 import React from 'react';
-import {ClockInterface} from 'types'
 import './Clock.css'
 import Countdown, { zeroPad } from 'react-countdown';
 
+export interface ClockInterface{
+  hours: number
+  minutes: number
+  seconds: number
+  completed: boolean
+  api: any
+}
 
 export const Clock = () => {
-  const renderer = ({completed, minutes, seconds, api}: ClockInterface) => {
+  const renderer = ({completed, minutes, seconds, api}:ClockInterface) => {
 
     if (!completed) {
       document.title = `${zeroPad(minutes)} minutes left`;

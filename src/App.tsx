@@ -7,6 +7,7 @@ import { Clock } from './components/Clock/Clock';
 import { Header } from './components/Header/Header';
 import { HistoryCalendar } from './components/HistoryCalendar/HistoryCalendar';
 import { LogIn } from './components/LogIn/LogIn';
+import { Logout } from './components/LogIn/LogOut';
 import { Registration } from './components/Registration/Registration';
 
 
@@ -24,11 +25,13 @@ const [auth, setAuth] = useState<boolean>(false);
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/login" element={<LogIn/>}/>
             <Route path="/admin" element={<Admin/>}/>
+            <Route path="/logout" element={<Logout/>}/>
+
 
             
         </Routes>
         <div className='bgc'>
-            <Clock/>
+            {/* <Clock/> */}
         </div>
 
     </>

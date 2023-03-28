@@ -10,13 +10,13 @@ export const Admin = () => {
 
 
 
-    fetch(`http://localhost:3001/admin`)
+    fetch(`http://localhost:3001/api/admin`)
     .then((response) => response.json())
     .then((data) => console.log(data))
     .then((data) => setHi(String(data)))
 
         return <>
-        <h1>hi {hi}</h1>
+        <h1>{hi}</h1>
         <button>Logout</button>
         </> 
 }

@@ -15,7 +15,8 @@ export const Header = () => {
 
         <NavLink  to="/registration">Sign up</NavLink>
         <NavLink  to="/login">Log in</NavLink>
-        <NavLink  to="/admin">Admin</NavLink>
+
+        <NavLink  to="/logout">Logout</NavLink>
 
       </header>
 
