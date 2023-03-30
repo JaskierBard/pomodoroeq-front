@@ -8,45 +8,43 @@ export interface ThisInterface {
 }
 
 export const Logout = () => {
-    const [user, setUser] = useState<any>()
-    const [decodedToken, setDecodedToken] = useState<any>()
+//     const [user, setUser] = useState<any>()
+//     const [decodedToken, setDecodedToken] = useState<any>()
 
 
-    const refreshToken = async () => {
-        try {
-          const res = await axios.post("/logout", { token:null });
-          setUser({
-            ...user,
-          });
-          return res.data;
-        } catch (err) {
-          console.log(err);
-        }
-      };
+//     const refreshToken = async () => {
+//         try {
+//           const res = await axios.post("/logout", { token:null });
+//           setUser({
+//             ...user,
+//           });
+//           return res.data;
+//         } catch (err) {
+//           console.log(err);
+//         }
+//       };
 
-    const axiosJWT = axios.create()
+//     const axiosJWT = axios.create()
 
-    axiosJWT.interceptors.request.use(
-      async (config) => {
-        let currentDate = new Date();
-        setDecodedToken(jwt_decode(user.accessToken)) ;
-        if (decodedToken.exp * 1000 < currentDate.getTime()) {
-          const data = await refreshToken();
-          config.headers["authorization"] = "Bearer " + null;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
+//     axiosJWT.interceptors.request.use(
+//       async (config) => {
+//         let currentDate = new Date();
+//         setDecodedToken(jwt_decode(user.accessToken)) ;
+//         if (decodedToken.exp * 1000 < currentDate.getTime()) {
+//           const data = await refreshToken();
+//           config.headers["authorization"] = "Bearer " + null;
+//         }
+//         return config;
+//       },
+//       (error) => {
+//         return Promise.reject(error);
+//       }
+//     );
 
-    const Logout = async (e:any) => {
-        e.preventDefault();
-
+    const Logout = async () => {
         try {
 
-          const res = await axios.post("http://localhost:3001/api/logout");
+        await axios.post("http://localhost:3001/api/logout");
         
         } catch (err) {
           console.log(err);

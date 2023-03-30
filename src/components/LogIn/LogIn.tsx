@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 
 
@@ -13,20 +13,27 @@ export const LogIn = () => {
     const [password, setPassword] = useState<string>('mati')
     const [decodedToken, setDecodedToken] = useState<any>()
 
+  
+
 
     const refreshToken = async () => {
         try {
-          const res = await axios.post("http://localhost:3001/api/refresh", { token: user.refreshToken });
+          const res = await axios.post("http://localhost:3001/api/refresh", { token: user.refreshToken, id:user.userId });
           setUser({
             ...user,
             accessToken: res.data.accessToken,
             refreshToken: res.data.refreshToken,
           });
+          console.log('after refresh token user:' + user.username)
           return res.data;
         } catch (err) {
           console.log(err);
         }
       };
+
+      useEffect(() => {
+        // refreshToken() Utworzyć zapytanie pobierające dane do SetUser aby po odświeżeniu strony znów mieć usera i tokeny w nim - zapytanie do bazy?
+      },[]);
 
     const axiosJWT = axios.create()
 
@@ -54,6 +61,7 @@ export const LogIn = () => {
           const res = await axios.post("http://localhost:3001/api/login", { username, password });
           console.log(res.data)
 
+
           setUser(res.data);
         } catch (err) {
           console.log(err);
@@ -69,17 +77,20 @@ export const LogIn = () => {
           console.log('hejo')
 
         } catch (err) {
+          console.log(err)
         }
       };
       
       const logout = async (e:any) => {
 
         try {
-          await axiosJWT.post("http://localhost:3001/api/logout" , {
+          await axiosJWT.delete("http://localhost:3001/api/logout" , 
+          { 
             headers: { authorization: "Bearer " + user.accessToken },
-          });
-          console.log('logout')
-
+            data: { id: user.userId } }
+          );
+          setDecodedToken(null)
+          setUser(null)
         } catch (err) {
         }
       };
@@ -102,6 +113,7 @@ export const LogIn = () => {
               
             </div>
           ) : (
+            
             <div className="login">
               <form onSubmit={handleSubmit}>
                 <span className="formTitle">Login</span>
@@ -119,6 +131,8 @@ export const LogIn = () => {
                   Login
                 </button>
               </form>
+              <button  onClick={admin}>Hej</button>
+
             </div>
           )}
         </div>
