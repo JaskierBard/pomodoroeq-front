@@ -96,7 +96,7 @@ h1{
 
   font-size: 20px;
 }
-
+/* 
 .tomato{
   display: flex;
   justify-content: center;
@@ -104,7 +104,7 @@ h1{
   background-image: url('../public/assets/images/tomato.png');
   background-size: contain;
   font-size: 40px;
-}
+} */
 
 .seed{
   display: flex;

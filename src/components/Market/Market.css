@@ -1,0 +1,49 @@
+input[type=range] {
+    width: 100%; /* Specific width is required for Firefox. */
+  }
+
+  
+
+  input{
+    appearance: none;
+
+  }
+
+
+  input[type=range]::-webkit-slider-thumb {
+    /* width: 30px;
+    height: 30px; */
+    /* border: 1px solid #000000; */
+    /* height: 30px;
+    width: 8px; */
+    /* border-radius: 8px; */
+    background-size: cover;
+
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+
+ 
+  .tomato[type=range]::-webkit-slider-thumb {
+        width: 30px;
+    height: 30px;
+    background-image: url('../../../public/assets/images/tomato.png');
+
+  }
+
+  .cucumber[type=range]::-webkit-slider-thumb {
+    width: 30px;
+height: 30px;
+background-image: url('../../../public/assets/images/cucumber.png');
+
+}
+
+.pumpkin[type=range]::-webkit-slider-thumb {
+    width: 30px;
+height: 30px;
+background-image: url('../../../public/assets/images/pumpkin.png');
+
+}
+
+
+  
