@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { FormEvent, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
+import { HeaderLogin } from "../Header/HeaderLogin";
+import { HeaderLogout } from "../Header/HeaderLogout";
 
 
 export interface ThisInterface {
@@ -97,26 +99,32 @@ export const LogIn = () => {
 
       
       return (
-        <div className="container">
+        
+        <div >
+            {user ? (
+      
+      <HeaderLogin/>
+
+    ) : (
+
+      <HeaderLogout/>
+
+    )}
           {user ? (
-            <div className="home">
+            <div className="container">
               <span>
                 Welcome to the <b>{user.isAdmin ? "admin" : "user"}</b> dashboard{" "}
                 <b>{user.username}</b>.
               </span>
               <button  onClick={admin}>Hej</button>
               <button  onClick={logout}>Logout</button>
-
-          
-          
-              
-              
             </div>
           ) : (
             
-            <div className="login">
+            <div className="container" >
               <form onSubmit={handleSubmit}>
-                <span className="formTitle">Login</span>
+                <h1 className="formTitle">Login</h1>
+                <br />
                 <input
                   type="text"
                   placeholder="username"

@@ -47,3 +47,36 @@ background-image: url('../../../public/assets/images/pumpkin.png');
 
 
   
+.sell-button, .buy-button{
+  width: 40vw;
+  height: 7vh;
+  background-color: #286847;
+  font-size: 30px;
+  
+
+}
+
+.sell-button:hover, .buy-button:hover{
+  cursor: pointer;
+  background-color: #28684765;
+}
+
+.customer{
+  /* position: fixed; */
+  margin-top: 20px;
+  height: 250px;
+  border-radius: 5px;
+  border: 1px solid #acbeb5;
+}
+
+.needs{
+  position: absolute;
+  margin-left: 350px;
+  width: 128px;
+  height: 128px;
+  background-image: url('../../../public/assets/images/message.png');
+}
+
+.picture {
+  margin-top: 100px;
+}

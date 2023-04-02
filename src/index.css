@@ -3,13 +3,14 @@
   padding: 0;
   user-select: none;
   font-family: "Akzidenz Grotesk BQ Medium", sans-serif;
-  /* color: #f1f1f1ad; */
+  color: #f1f1f1d2;
+  text-decoration: none;
   
 
 }
 
 body{
-  position: relative;
+  /* position: relative; */
 
   background-color: #002007;
   display: flex;
@@ -17,7 +18,7 @@ body{
 }
 .bgc{
   height: 94vh;
-  position: absolute;
+  position:fixed;
 
   width: 80vw;
   background-color: #65bb90;
@@ -152,3 +153,43 @@ transition: transform 150ms, box-shadow 150ms;
 box-shadow: rgba(0, 0, 0, .35) 0 3px 9px 0;
 transform: translateY(-2px);
 } */
+
+footer{
+  position: absolute;
+  top: 97vh;
+  width: 80vw;
+  background-color: #28684760;
+}
+
+button{
+  width: 20vw;
+  height: 4vh;
+  margin-top: 5px;
+  background-color: #286847;
+  font-size: 30px;
+  
+
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: #28684765;
+}
+
+.container {
+  position: absolute;
+  margin-top: 10vh;
+  left: calc(50% - 300px);
+  width: 600px;
+  background-color: #286847;
+  border: 1px solid #64c78d;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 5px 15px;
+  text-align: center;
+  justify-content: center;
+}

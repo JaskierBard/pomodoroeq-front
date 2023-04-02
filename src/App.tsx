@@ -4,7 +4,6 @@ import { Admin } from './components/Admin/admin';
 
 import { Callendar } from './components/Calendar/callendar';
 import { Clock } from './components/Clock/Clock';
-import { Header } from './components/Header/Header';
 import { HistoryCalendar } from './components/HistoryCalendar/HistoryCalendar';
 import { LogIn } from './components/LogIn/LogIn';
 import { Logout } from './components/LogIn/LogOut';
@@ -22,9 +21,8 @@ const [auth, setAuth] = useState<boolean>(false);
     
   return (
     <>  
-        <Header/>
         <Routes>
-            {/* <Redirect path='/' ></Redirect> */}
+        <Route path="/" element={<Clock/>}/>
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/login" element={<LogIn/>}/>
             <Route path="/market" element={<Market/>}/>
@@ -39,6 +37,7 @@ const [auth, setAuth] = useState<boolean>(false);
         <div className='bgc'>
             {/* <Clock/> */}
         </div>
+        <footer>Credits</footer>
 
     </>
 );
