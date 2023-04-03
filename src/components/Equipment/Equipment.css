@@ -14,3 +14,11 @@
     rotate: 36deg;
     cursor: pointer;
 }
+
+.eq-container{
+position: absolute;
+display: block; 
+background-color: rgb(31, 80, 69);
+bottom: 3px;
+font-size: larger;
+}
