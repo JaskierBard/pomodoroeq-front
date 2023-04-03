@@ -1,13 +1,12 @@
 import axios from "axios";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { HeaderLogin } from "../Header/HeaderLogin";
 import { HeaderLogout } from "../Header/HeaderLogout";
 
 
-export interface ThisInterface {
-    decodedToken: any
-}
+
+
 
 export const LogIn = () => {
     const [user, setUser] = useState<any>()
@@ -19,22 +18,35 @@ export const LogIn = () => {
 
 
     const refreshToken = async () => {
-        try {
-          const res = await axios.post("http://localhost:3001/api/refresh", { token: user.refreshToken, id:user.userId });
-          setUser({
-            ...user,
-            accessToken: res.data.accessToken,
-            refreshToken: res.data.refreshToken,
-          });
-          console.log('after refresh token user:' + user.username)
-          return res.data;
-        } catch (err) {
-          console.log(err);
-        }
-      };
+      try {
+        const res = await axios.post("http://localhost:3001/api/refresh", { token: user.refreshToken, id:user.userId });
+        setUser({
+          ...user,
+          accessToken: res.data.accessToken,
+          refreshToken: res.data.refreshToken,
+        });
+        return res.data;
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
       useEffect(() => {
-        // refreshToken() Utworzyć zapytanie pobierające dane do SetUser aby po odświeżeniu strony znów mieć usera i tokeny w nim - zapytanie do bazy?
+        try {
+          const getToken = localStorage.getItem('user');
+
+          if (getToken) {
+            setUser(JSON.parse(getToken))
+          }
+          // console.log('wewnątrz ' + typeof(getToken))
+          // console.log(
+          // )
+          // )
+          
+        } finally {
+          // setDecodedToken(jwt_decode(user))
+
+        }
       },[]);
 
     const axiosJWT = axios.create()
@@ -43,10 +55,11 @@ export const LogIn = () => {
       async (config) => {
         let currentDate = new Date();
         setDecodedToken(jwt_decode(user.accessToken)) ;
+        console.log('decodedtoken ' + decodedToken)
+
         if (decodedToken.exp * 1000 < currentDate.getTime()) {
           const data = await refreshToken();
           config.headers["authorization"] = "Bearer " + data.accessToken;
-          console.log('udało się?')
         }
         return config;
       },
@@ -55,44 +68,35 @@ export const LogIn = () => {
       }
     );
 
+
     const handleSubmit = async (e:any) => {
         e.preventDefault();
-
         try {
-
           const res = await axios.post("http://localhost:3001/api/login", { username, password });
-          console.log(res.data)
-
-
           setUser(res.data);
+          console.log(res.data)
+          localStorage.setItem('user', JSON.stringify(res.data));
+      
         } catch (err) {
-          console.log(err);
+          console.log(err);      
         }
       };
 
-      const admin = async (e:any) => {
-
-        try {
-          await axiosJWT.get("http://localhost:3001/api/admin" , {
-            headers: { authorization: "Bearer " + user.accessToken },
-          });
-          console.log('hejo')
-
-        } catch (err) {
-          console.log(err)
-        }
-      };
+ 
       
       const logout = async (e:any) => {
+        console.log('usuwam dane ' + user.accessToken)
 
         try {
-          await axiosJWT.delete("http://localhost:3001/api/logout" , 
+          await axios.delete("http://localhost:3001/api/logout" , 
           { 
             headers: { authorization: "Bearer " + user.accessToken },
             data: { id: user.userId } }
           );
+          console.log('usuwam dane...')
           setDecodedToken(null)
           setUser(null)
+          localStorage.removeItem('token')
         } catch (err) {
         }
       };
@@ -102,23 +106,18 @@ export const LogIn = () => {
         
         <div >
             {user ? (
-      
-      <HeaderLogin/>
+      <HeaderLogin />
 
     ) : (
 
       <HeaderLogout/>
 
     )}
-          {user ? (
-            <div className="container">
-              <span>
-                Welcome to the <b>{user.isAdmin ? "admin" : "user"}</b> dashboard{" "}
-                <b>{user.username}</b>.
-              </span>
-              <button  onClick={admin}>Hej</button>
-              <button  onClick={logout}>Logout</button>
-            </div>
+          {user  ? (<>
+            {/* <HeaderLogin /> */}
+                   <button onClick={logout}>Logout</button>
+
+          </>
           ) : (
             
             <div className="container" >
@@ -135,42 +134,13 @@ export const LogIn = () => {
                   placeholder="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <br />
                 <button type="submit" className="submitButton">
                   Login
                 </button>
               </form>
-              <button  onClick={admin}>Hej</button>
-
             </div>
           )}
         </div>
       );
     }
-    
-    // return {user? ()
-    // }: (<form onSubmit={handleSubmit}>
-    //     <h1>Login</h1>
-    //     <p>
-    //     <label>
-    //         Name: <br/>
-    //         <input 
-    //             type="text" 
-    //             value={username} 
-    //             onChange={(e) => setUsername(e.target.value)}
-    //             />
-    //     </label>
-    //     </p>
-    //     <p>
-    //     <label>
-    //         Password: <br/>
-    //         <input 
-    //             type="current-password" 
-    //             value={password} 
-    //             onChange={(e) => setPassword(e.target.value)}
-    //             />
-    //     </label>
-    //     </p>  
-        
-    //     <button type="submit">Log in</button>
-        
-    // </form>)

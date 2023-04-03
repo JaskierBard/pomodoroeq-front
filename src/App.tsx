@@ -10,35 +10,29 @@ import { Logout } from './components/LogIn/LogOut';
 import { Market } from './components/Market/Market';
 import { Registration } from './components/Registration/Registration';
 import { NotFoundView } from './views/NotFoundView';
+import { LoginView } from './views/LoginView';
+import { RegistrationView } from './views/RegistrationView';
+import { MarketView } from './views/MarketView';
 
 
 
 export const App = () => {
 
-const [auth, setAuth] = useState<boolean>(false);
-
-
-    
   return (
     <>  
         <Routes>
-        <Route path="/" element={<Clock/>}/>
-            <Route path="/registration" element={<Registration/>}/>
+            <Route path="/" element={<Clock/>}/>
+            <Route path="/registration" element={<RegistrationView/>}/>
             <Route path="/login" element={<LogIn/>}/>
-            <Route path="/market" element={<Market/>}/>
+            <Route path="/market" element={<MarketView/>}/>
             <Route path="/admin" element={<Admin/>}/>
             <Route path="/logout" element={<Logout/>}/>
             <Route path="*" element={<NotFoundView/>}/>
-
-
-
-            
         </Routes>
+
         <div className='bgc'>
-            {/* <Clock/> */}
         </div>
         <footer>Credits</footer>
-
     </>
 );
 
