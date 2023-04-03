@@ -1,5 +1,6 @@
 import React  from 'react';
 import {NavLink} from "react-router-dom";
+import { Equipment } from '../Equipment/Equipment';
 
 
 
@@ -10,9 +11,12 @@ export const HeaderLogin = () => {
         <header>
           <NavLink  to="/"><h1>PomodoroEq</h1></NavLink>
           <NavLink  to="/market">Market</NavLink>
-          <NavLink  to="/logout">Logout</NavLink>
+          <NavLink  to="/history">Historia</NavLink>
           <div>100<img src="./assets/images/coin.png" alt="" /></div>
+
+          <NavLink  to="/login">Wyloguj</NavLink>
       </header>
+
 
     </>
 );

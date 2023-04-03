@@ -7,8 +7,8 @@ export const Callendar = () => {
  
 
   useEffect(() => {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    const monthNames = ["Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca",
+    "Lipca", "Sierpnia", "Września", "Października", "Listopada", "Grudnia"
   ];
 
     const days = []

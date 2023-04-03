@@ -1,28 +1,31 @@
 import React from 'react';
+import './Equipment.css'
+import axios from 'axios';
 
-export const Equipment = () => {
+interface Props {
+    user: any
+ }
 
-  
-    const getEq = async(e:any) => {
-        e.preventDefault();
+export const Equipment = (props:Props) => {
 
+
+
+    const getEq = async () => {
+        console.log(props.user.accessToken)
         try {
-            const res = await fetch(`http://localhost:3001/user`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const data = await res.json();
-        } finally {
-            // setLoading(false)
+          await axios.get("http://localhost:3001/api/equipment" , 
+          { 
+            headers: { authorization: "Bearer " + props.user.accessToken },
+            data: { id: props.user.userId } }
+          );
+          console.log('usuwam dane...')
+        } catch (err) {
         }
-    }
+      };
    
     return (
         <>
-          <div className='tomato'>0</div>
-          <div className='seed'>0</div>
+          <div onClick={getEq} className='equipment'></div>
         </>
       );
 }

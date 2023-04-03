@@ -1,0 +1,16 @@
+.equipment{
+    position: absolute;
+    top: 10vh;
+    right: 10vw;
+    width: 64px;
+    height: 64px;
+
+    background-image: url('../../../public/assets/images/bag.png');
+}
+
+.equipment:hover{
+    transition: 0.3s;
+    top: 9.5vh;
+    rotate: 36deg;
+    cursor: pointer;
+}

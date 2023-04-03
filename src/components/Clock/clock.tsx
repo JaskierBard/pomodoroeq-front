@@ -25,7 +25,7 @@ export const Clock = () => {
       } else {
         return <>
           <span >{zeroPad(minutes)}:{zeroPad(seconds)}</span>
-          <button onClick={() => api.pause()}>Pause</button>
+          <button onClick={() => api.pause()}>Pauza</button>
           <button onDoubleClick={() => api.stop()}>Reset</button>
         </> 
       }

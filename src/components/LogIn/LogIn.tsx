@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { HeaderLogin } from "../Header/HeaderLogin";
 import { HeaderLogout } from "../Header/HeaderLogout";
+import { Equipment } from "../Equipment/Equipment";
 
 
 
@@ -38,35 +39,14 @@ export const LogIn = () => {
           if (getToken) {
             setUser(JSON.parse(getToken))
           }
-          // console.log('wewnątrz ' + typeof(getToken))
-          // console.log(
-          // )
-          // )
+         
           
         } finally {
-          // setDecodedToken(jwt_decode(user))
 
         }
       },[]);
 
-    const axiosJWT = axios.create()
-
-    axiosJWT.interceptors.request.use(
-      async (config) => {
-        let currentDate = new Date();
-        setDecodedToken(jwt_decode(user.accessToken)) ;
-        console.log('decodedtoken ' + decodedToken)
-
-        if (decodedToken.exp * 1000 < currentDate.getTime()) {
-          const data = await refreshToken();
-          config.headers["authorization"] = "Bearer " + data.accessToken;
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
+    
 
 
     const handleSubmit = async (e:any) => {
@@ -80,6 +60,7 @@ export const LogIn = () => {
         } catch (err) {
           console.log(err);      
         }
+
       };
 
  
@@ -96,7 +77,7 @@ export const LogIn = () => {
           console.log('usuwam dane...')
           setDecodedToken(null)
           setUser(null)
-          localStorage.removeItem('token')
+          localStorage.removeItem('user')
         } catch (err) {
         }
       };
@@ -105,22 +86,29 @@ export const LogIn = () => {
       return (
         
         <div >
-            {user ? (
-      <HeaderLogin />
+            {user ? ( <>
+              <HeaderLogin />
+              <Equipment user = {user}/>
+              </>
+              
+
+      
 
     ) : (
 
       <HeaderLogout/>
 
     )}
-          {user  ? (<>
-            {/* <HeaderLogin /> */}
-                   <button onClick={logout}>Logout</button>
+          {user  ? (<div className="container">
+                  <h1>Jesteś pewien?</h1>
+                   <button onClick={logout}>Tak</button>
+                   <button>Nie</button>
 
-          </>
+
+          </div>
           ) : (
             
-            <div className="container" >
+            // <div className="container" >
               <form onSubmit={handleSubmit}>
                 <h1 className="formTitle">Login</h1>
                 <br />
@@ -139,7 +127,7 @@ export const LogIn = () => {
                   Login
                 </button>
               </form>
-            </div>
+            // </div>
           )}
         </div>
       );

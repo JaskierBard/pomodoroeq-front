@@ -50,10 +50,10 @@ export const Registration = () => {
     }
 
     return <form onSubmit={sendForm}>
-        <h1>Registration</h1>
+        <h1>Utwórz konto</h1>
         <p>
         <label>
-            Name: <br/>
+            Nazwa użytkownika: <br/>
             <input 
                 type="text" 
                 value={form.name} 
@@ -73,7 +73,7 @@ export const Registration = () => {
         </p>
         <p>
         <label>
-            Password: <br/>
+            Hasło: <br/>
             <input 
                 type="current-password" 
                 value={form.password} 
