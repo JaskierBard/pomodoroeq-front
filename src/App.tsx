@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 import { Admin } from './components/Admin/admin';
-import { Clock } from './components/Clock/Clock';
 import { LogIn } from './components/LogIn/LogIn';
 import { Logout } from './components/LogIn/LogOut';
 import { NotFoundView } from './views/NotFoundView';
