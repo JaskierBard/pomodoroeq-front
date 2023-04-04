@@ -8,14 +8,14 @@ export const HeaderLogin = () => {
 
 
 
-  
+
   return (
     <>
         <header>
           <NavLink  to="/"><h1>PomodoroEq</h1></NavLink>
           <NavLink  to="/market">Market</NavLink>
           <NavLink  to="/history">Historia</NavLink>
-          <div>100<img src="./assets/images/coin.png" alt="" /></div>
+          
 
           <NavLink  to="/login">Wyloguj</NavLink>
       </header>

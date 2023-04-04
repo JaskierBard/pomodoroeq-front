@@ -21,7 +21,7 @@ body{
   position:fixed;
 
   width: 80vw;
-  background-color: #65bb90;
+  background-color: #649b80;
   z-index: -1;
 }
 
@@ -57,9 +57,10 @@ header{
   justify-content:space-between;
   border-radius: 2px;
   width: 80vw;
-  height: 50px;
-  
-  background-color: #286847;
+  height: 90px;
+  background-image: url('../public/assets/images/wood.jpg');
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.75);
+
 }
 
 h1{  
@@ -161,20 +162,6 @@ footer{
   background-color: #28684760;
 }
 
-button{
-  width: 20vw;
-  height: 4vh;
-  margin-top: 5px;
-  background-color: #286847;
-  font-size: 30px;
-  
-
-}
-
-button:hover{
-  cursor: pointer;
-  background-color: #28684765;
-}
 
 .container {
   position: absolute;
@@ -192,4 +179,66 @@ button:hover{
   padding: 5px 15px;
   text-align: center;
   justify-content: center;
+}
+
+
+
+a {
+  margin: 5px 5px 30px 5px;
+
+  
+  font-size: 40px;
+  background-color: #00000036;
+  
+}
+a:hover {
+  color: #bdf8b7;
+  box-shadow: rgba(1, 1, 1, 0) 3px 1px 3px 3px\;
+}
+
+
+/* CSS */
+button {
+  margin-right: 5px;
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #348058;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+button:hover,
+button:focus {
+  background-color: #3b8a61;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #23583d;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
 }

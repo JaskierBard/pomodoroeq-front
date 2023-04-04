@@ -9,6 +9,7 @@ import { RegistrationView } from './views/RegistrationView';
 import { MarketView } from './views/MarketView';
 import { HistoryCalendarView } from './views/HistoryCallendarView';
 import { CalendarView } from './views/CallendarView';
+import { Spinner } from './components/common/Spinner/Spinner';
 
 export const App = () => {
   return (
