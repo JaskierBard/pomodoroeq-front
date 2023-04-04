@@ -6,6 +6,9 @@ import { Equipment } from '../Equipment/Equipment';
 
 export const HeaderLogin = () => {
 
+
+
+  
   return (
     <>
         <header>
