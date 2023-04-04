@@ -44,8 +44,8 @@ export const Equipment = (props:Props) => {
                 <li><img src="./assets/images/cucumber.png" alt="" />{data.cucumber}</li>
                 <li><img src="./assets/images/pumpkin.png" alt="" />{data.pumpkin}</li>
                 <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.tomatoSeed}</li>
-                <li>Nasiona ogórka: {data.cucumberSeed}</li>
-                <li>Nasiona dyni: {data.pumpkinSeed}</li>
+                <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.cucumberSeed}</li>
+                <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.pumpkinSeed}</li>
             </ul>
             </div>
                         <div className='wallet'>{data.money} <img src="./assets/images/coin.png" alt="" /></div>

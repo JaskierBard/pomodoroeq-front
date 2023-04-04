@@ -23,11 +23,15 @@ export const Clock = () => {
           <button onDoubleClick={() => api.stop()}>Reset</button>
         </> 
       } else {
-        return <>
+        return <div className='bgc2'>
+          <div className='bgc3'>
+          <div className='container'>
           <span >{zeroPad(minutes)}:{zeroPad(seconds)}</span>
           <button onClick={() => api.pause()}>Pauza</button>
           <button onDoubleClick={() => api.stop()}>Reset</button>
-        </> 
+          </div>
+          </div>
+        </div> 
       }
 
     } else {

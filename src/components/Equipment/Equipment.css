@@ -26,15 +26,19 @@ width: 80vw;
 }
 
 ul{
-    position: relative;
-
+    /* position: relative; */
     display: flex; 
 
 }
 li{
+    width: 150px;
     list-style-type: none;
-    /* width: 30px;
-    background-color: aquamarine; */
+    background-color: rgba(0, 0, 0, 0.438);
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+    flex: auto;
+  
 }
 
 li:hover{

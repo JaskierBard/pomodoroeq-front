@@ -24,6 +24,69 @@
     margin-right: 20px;
 }
 
+/* .bgc2{
+  height: 100vh;
+  top: 0px;
+  position:fixed;
+
+  width: 80vw;
+  background-image: url('../../../public/assets/images/wood.jpg');
+  z-index: 22;
+  transition: 1s;
+} */
+.bgc2 {
+  height: 100vh;
+  z-index: 2;
+  width: 80vw;
+  top: 0px;
+  position:fixed;
+    background-image: url('../../../public/assets/images/wood.jpg');
+    background-size:contain;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-name: slide-down;
+
+  background-position: 0px -30vh;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+@keyframes slide-down {
+  from {
+    background-position: 0vh -80vh;
+  }
+  to {
+    background-position: 0vh -30vh;
+  }
+}
+
+
+.bgc3 {
+  height: 100vh;
+  z-index: 2;
+
+  width: 80vw;
+  top: 0px;
+  position:fixed;
+    background-image: url('../../../public/assets/images/wood.jpg');
+    background-size:contain;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-name: slide-up;
+
+  background-position: 0px 50vh;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+@keyframes slide-up {
+  from {
+    background-position: 0vh 100vh;
+  }
+  to {
+    background-position: 0vh 50vh;
+  }
+}
 
 
 
