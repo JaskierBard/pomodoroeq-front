@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { getUserId } from '../../functions/getUserId';
+
 import './Market.css'
 import axios from 'axios';
 
@@ -15,8 +17,10 @@ export const BuyProducts = () => {
  
 
   useEffect(() => {
+    setUserId(getUserId())
+
     sumPrice()
-  });
+  },[userId]);
 
   const sumPrice = async() =>  {
     const result = (Number(tomatoSeed) * 2) + (Number(cucumberSeed) * 4) + (Number(pumpkinSeed) * 10)
@@ -29,6 +33,8 @@ export const BuyProducts = () => {
 
   const handleSubmit = async (e:any) => {
     e.preventDefault();
+    if (userId !== 0) {
+
     try {
       const res = await axios.post("http://localhost:3001/api/equipment", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
       setPurchase(res.data);
@@ -36,7 +42,7 @@ export const BuyProducts = () => {
     } catch (err) {
       console.log(err);      
     }
-
+  }
   };
 
    

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Equipment.css'
+import { getUserId } from '../../functions/getUserId';
 
 
 
@@ -14,13 +15,14 @@ export const Equipment = () => {
    
   
     useEffect(() => {
+      setUserId(getUserId())
+
        getEq()
-     
-      },[]);
+      },[userId]);
 
 
     const getEq = async () => {
-        // console.log(props.user.userId)
+       if (userId !== 0) {
         try {
           
          const res = await fetch(`http://localhost:3001/api/equipment`, {
@@ -36,7 +38,8 @@ export const Equipment = () => {
 
         setData(ol['0']);
         } catch (err) {
-        
+        }
+
     }
 
       };

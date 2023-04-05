@@ -7,6 +7,5 @@ export const CalendarView = () => (
     <>  
         <HeaderLogin/>
         <Clock/>
-        <Callendar/>
     </>
 );

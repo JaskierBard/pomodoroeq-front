@@ -25,7 +25,7 @@ body{
   z-index: -1;
 }
 
-form{
+.form{
   position: absolute;
   margin-top: 10vh;
   left: calc(50% - 300px);

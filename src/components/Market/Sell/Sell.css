@@ -25,11 +25,12 @@
   }
   
   .customer{
-    width: 15vw;
+    width: 13vw;
     margin-top: 20px;
     height: 250px;
     border-radius: 5px;
-    /* border: 1px solid #acbeb5; */
+    background-color: rgba(0, 0, 0, 0.315);
+    border: 3px solid #000000;
   }
   
   .needs{
@@ -48,11 +49,10 @@
   
 
 .customers{
- 
   margin-top: 10vh;
   display: flex;
   justify-content:space-between;
-
+  height: 70vh;
   width: 80vw;
   position: absolute;
  
@@ -61,10 +61,11 @@
 p{
   margin-left: 20px;
   margin-top: 25px;
+  
 }
 
 
-.needs:hover, .picture:hover{
+.needs:hover{
   cursor: pointer;
 }
 
