@@ -1,12 +1,10 @@
-import React  from 'react';
+import React, { useEffect, useState }  from 'react';
 import {NavLink} from "react-router-dom";
 import { Equipment } from '../Equipment/Equipment';
 
 
 
 export const HeaderLogin = () => {
-
-
 
 
   return (
@@ -19,6 +17,8 @@ export const HeaderLogin = () => {
 
           <NavLink  to="/login">Wyloguj</NavLink>
       </header>
+      <Equipment/>
+
 
 
     </>

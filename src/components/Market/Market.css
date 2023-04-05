@@ -22,22 +22,22 @@ input[type=range] {
   .tomato[type=range]::-webkit-slider-thumb {
         width: 30px;
     height: 30px;
-    background-image: url('../../../public/assets/images/tomato.png');
+    background-image: url('../../../public/assets/images/tomato-seed.png');
 
   }
 
   .cucumber[type=range]::-webkit-slider-thumb {
     width: 30px;
-    margin-left: -10px;
+    /* margin-left: -10px; */
 height: 30px;
-background-image: url('../../../public/assets/images/cucumber.png');
+background-image: url('../../../public/assets/images/tomato-seed.png');
 
 }
 
 .pumpkin[type=range]::-webkit-slider-thumb {
     width: 30px;
 height: 30px;
-background-image: url('../../../public/assets/images/pumpkin.png');
+background-image: url('../../../public/assets/images/tomato-seed.png');
 
 }
 

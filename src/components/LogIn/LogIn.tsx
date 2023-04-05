@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { HeaderLogin } from "../Header/HeaderLogin";
 import { HeaderLogout } from "../Header/HeaderLogout";
@@ -14,8 +14,6 @@ export const LogIn = () => {
     const [username, setUsername] = useState<string>('Mati');
     const [password, setPassword] = useState<string>('mati')
     const [decodedToken, setDecodedToken] = useState<any>()
-
-  
 
 
     const refreshToken = async () => {
@@ -69,6 +67,7 @@ export const LogIn = () => {
         try {
           const res = await axios.post("http://localhost:3001/api/login", { username, password });
           setUser(res.data);
+
           console.log(res.data)
           localStorage.setItem('user', JSON.stringify(res.data));
       
@@ -103,7 +102,7 @@ export const LogIn = () => {
         <div >
             {user ? ( <>
               <HeaderLogin />
-              <Equipment user = {user}/>
+
               </>
               
 

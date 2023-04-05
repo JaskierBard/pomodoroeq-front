@@ -1,80 +1,97 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Market.css'
+import axios from 'axios';
+
 export const BuyProducts = () => {
-  const [tomato , setTomato] = useState<string>('0')
-  const [cucumber , setCucumber] = useState<string>('0')
-  const [pumpkin , setPumpkin] = useState<string>('0')
-  const [sum , setSum] = useState<number>(0)
+  const [tomatoSeed , setTomatoSeed] = useState<string>('0')
+  const [cucumberSeed , setCucumberSeed] = useState<string>('0')
+  const [pumpkinSeed , setPumpkinSeed] = useState<string>('0')
+  const [value , setValue] = useState<number>(0)
+  const [userId , setUserId] = useState<any | null>('')
+
+  const [purchase , setPurchase] = useState<number>(0)
+
+
+ 
 
   useEffect(() => {
-  sumPrice()
+    sumPrice()
+
+    const data = (localStorage.getItem('user'))
+
+    if (data) {
+      const parsedData = ( JSON.parse(data));
+      setUserId(parsedData['userId'])
+    }
   });
 
   const sumPrice = async() =>  {
-    const result = (Number(tomato) * 2) + (Number(cucumber) * 4) + (Number(pumpkin) * 10)
-    setSum(result)
+    const result = (Number(tomatoSeed) * 2) + (Number(cucumberSeed) * 4) + (Number(pumpkinSeed) * 10)
+    setValue(result)
   }
 
 
 
-  const changeTomato = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setTomato(e.target.value);
-  };
-  const changeCucumber = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setCucumber(e.target.value);
-  };
-  const changePumpkin = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setPumpkin(e.target.value);
-  };
-   
-    return (
-        <>
-       <div className="seeds-market">
-              <form>
-              <span className="formTitle">Nasiona</span>
 
-              <label>
-                <h2>Pomidor: {tomato}</h2><br/>
+
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:3001/api/equipment", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
+      setPurchase(res.data);
+  
+    } catch (err) {
+      console.log(err);      
+    }
+
+  };
+
+   
+    return (   
+       <div className="seeds-market">
+              <form onSubmit={handleSubmit}> 
+              <span className="formTitle">Nasiona</span>
+              <label >
+                <h2>Pomidor: {tomatoSeed}</h2><br/>
                 <input
                     className='tomato'
                     type="range"
-                    onChange={changeTomato}
+                    onChange={(e) => setTomatoSeed(e.target.value)}
                     step={1}
                     min={0}
                     max={50}
-                    value={tomato}
+                    value={tomatoSeed}
                 />
               </label>
               <label>
-                <h2>Ogórek: {cucumber}</h2><br/>
+                <h2>Ogórek: {cucumberSeed}</h2><br/>
                 <input
                   className='cucumber'
                   type="range"
-                  onChange={changeCucumber}
+                  onChange={(e) => setCucumberSeed(e.target.value)}
                   step={1}
                   min={0}
                   max={50}
-                  value={cucumber}
+                  value={cucumberSeed}
           
                 />
               </label>
               <label>
-                <h2>Dynia: {pumpkin}</h2><br/>
+                <h2>Dynia: {pumpkinSeed}</h2><br/>
                 <input
                     className='pumpkin'
                     type="range"
-                    onChange={changePumpkin}
+                    onChange={(e) => setPumpkinSeed(e.target.value)}
                     step={1}
                     min={0}
                     max={50}
-                    value={pumpkin}
+                    value={pumpkinSeed}
                 />
               </label>
               <br />
-              <button>Kup za {sum} monet</button>
+              <button type='submit'>Kup za {value} monet</button>
               </form>
             </div>
-        </>
       );
 }
     
