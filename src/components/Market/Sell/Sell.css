@@ -1,4 +1,6 @@
 .sell-button, .buy-button{
+    display: flex;
+
     width: 40vw;
     height: 7vh;
     background-color: #286847;
@@ -7,27 +9,62 @@
   
   }
   
+  .buttons-container{
+    position: absolute;
+
+    display: flex;
+
+    width: 80vw;
+
+
+  }
+
   .sell-button:hover, .buy-button:hover{
     cursor: pointer;
     background-color: #28684765;
   }
   
   .customer{
-    /* position: fixed; */
+    width: 15vw;
     margin-top: 20px;
     height: 250px;
     border-radius: 5px;
-    border: 1px solid #acbeb5;
+    /* border: 1px solid #acbeb5; */
   }
   
   .needs{
     position: absolute;
-    margin-left: 350px;
+    margin-left: 5vw;
     width: 128px;
     height: 128px;
     background-image: url('../../../../public/assets/images/message.png');
+
   }
   
   .picture {
     margin-top: 100px;
   }
+
+  
+
+.customers{
+ 
+  margin-top: 10vh;
+  display: flex;
+  justify-content:space-between;
+
+  width: 80vw;
+  position: absolute;
+ 
+}
+
+p{
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+
+.needs:hover, .picture:hover{
+  cursor: pointer;
+}
+

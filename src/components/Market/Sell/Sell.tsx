@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Sell.css'
 export const SellProducts = () => {
-  const [tomato , setTomato] = useState<string>('0')
+//   const [tomato , setTomato] = useState<string>('0')
 
   const customers =[
     {
@@ -25,19 +25,30 @@ export const SellProducts = () => {
         picture: "./assets/images/customer1.png",
         needs: 'chce kupić 2 ',
         img: "./assets/images/cucumber.png"
+    },{
+        name: 'Weronika',
+        picture: "./assets/images/customer2.png",
+        needs: 'chce kupić 5 ',
+        img: "./assets/images/cucumber.png"
     }
   ] 
 
    
     return (
         <>
-       <div className="container">
+       <div className="customers">
             {customers.map(person => 
                 <div className='customer'>
                     <div className='needs'>
-                        <h4>{person.name}</h4>
-                        <p>{person.needs}</p>
-                        <img src={person.img}/>
+                        <p>
+                            <strong>
+                                {person.name}
+                            </strong>
+                            <br />
+                            {person.needs}
+                            <br />
+                            <img src={person.img}/>
+                        </p>
                     </div>
                     <img className='picture' src={person.picture} alt="customer" />
                 </div>

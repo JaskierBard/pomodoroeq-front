@@ -16,13 +16,6 @@ export const BuyProducts = () => {
 
   useEffect(() => {
     sumPrice()
-
-    const data = (localStorage.getItem('user'))
-
-    if (data) {
-      const parsedData = ( JSON.parse(data));
-      setUserId(parsedData['userId'])
-    }
   });
 
   const sumPrice = async() =>  {

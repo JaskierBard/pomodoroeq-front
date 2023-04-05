@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Equipment.css'
-import axios from 'axios';
 
 
 
@@ -16,12 +15,7 @@ export const Equipment = () => {
   
     useEffect(() => {
        getEq()
-       const data = (localStorage.getItem('user'))
-  
-      if (data) {
-        const parsedData = ( JSON.parse(data));
-        setUserId(parsedData['userId'])
-      }
+     
       },[]);
 
 
@@ -35,7 +29,7 @@ export const Equipment = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                userId:userId,
+                userId: userId,
             } )
         });
         const ol = await res.json()
