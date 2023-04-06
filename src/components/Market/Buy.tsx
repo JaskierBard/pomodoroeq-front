@@ -17,12 +17,12 @@ export const BuyProducts = () => {
  
 
   useEffect(() => {
-    setUserId(getUserId())
-
     sumPrice()
-  },[userId]);
 
-  const sumPrice = async() =>  {
+    setUserId(getUserId())
+  });
+
+  const sumPrice = () =>  {
     const result = (Number(tomatoSeed) * 2) + (Number(cucumberSeed) * 4) + (Number(pumpkinSeed) * 10)
     setValue(result)
   }
@@ -49,7 +49,6 @@ export const BuyProducts = () => {
     return (   
        <div className="seeds-market">
               <form onSubmit={handleSubmit}> 
-              <span className="formTitle">Nasiona</span>
               <label >
                 <h2>Pomidor: {tomatoSeed}</h2><br/>
                 <input

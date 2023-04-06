@@ -1,6 +1,5 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import { Admin } from './components/Admin/admin';
 import { LogIn } from './components/LogIn/LogIn';
 import { Logout } from './components/LogIn/LogOut';
 import { NotFoundView } from './views/NotFoundView';
@@ -14,14 +13,11 @@ export const App = () => {
   return (
     <>  
         <Routes>
-            <Route path="/" element={<CalendarView/>}/>
+            <Route path="/clock" element={<CalendarView/>}/>
             <Route path="/registration" element={<RegistrationView/>}/>
             <Route path="/login" element={<LogIn/>}/>
-            {/* <Route path="/callendar" element={<CalendarView/>}/> */}
             <Route path="/history" element={<HistoryCalendarView/>}/>
             <Route path="/market" element={<MarketView/>}/>
-            <Route path="/admin" element={<Admin/>}/>
-            {/* <Route path="/logout" element={<Logout/>}/> */}
             <Route path="*" element={<NotFoundView/>}/>
         </Routes>
 

@@ -3,7 +3,7 @@
 
     width: 40vw;
     height: 7vh;
-    background-color: #286847;
+    background-image: url('../../../../public/assets/images/wood.jpg');
     font-size: 30px;
     
   
@@ -69,3 +69,10 @@ p{
   cursor: pointer;
 }
 
+.getClientButton {
+  position: absolute;
+  background-image: url('../../../../public/assets/images/wood.jpg');
+  bottom: 10vh;
+  left: 50%;
+  
+}

@@ -4,6 +4,7 @@ import { RandomCustomer } from '../../../functions/customersCreator'
 import { getUserId } from '../../../functions/getUserId';
 
 interface Customers {
+    id: string;
     name: string;
     quantity: number;
     needs: string;
@@ -13,17 +14,23 @@ interface Customers {
 
 export const SellProducts = () => {
   const [customers , setCustomers] = useState<Customers[]>([
-    {  name: 'error' ,quantity: 1, needs: 'error', picture: 'error', needPicture:'error'},
+    { id: '1', name: 'error' ,quantity: 1, needs: 'error', picture: 'error', needPicture:'error'},
   ])
-  const [sell , setSell] = useState<number>(0)
+  const [order , setOrder] = useState<any>()
+  // const [value , setValue] = useState<number>(0)
 
 
   const [userId , setUserId] = useState<number>(0)
+
+
 
   useEffect(() => {
     setUserId(getUserId())
     getCustomers()
     },[userId]);
+
+  
+
 
     const getCustomers = async () => {
         if (userId !== 0) {
@@ -39,7 +46,6 @@ export const SellProducts = () => {
              } )
          });
          const ol = await res.json()
-         console.log(ol)
          setCustomers(ol);
          } catch (err) {
          }
@@ -49,11 +55,8 @@ export const SellProducts = () => {
        };
 
 
-  const handleSubmit = async (e:any) => {
-    // e.preventDefault();
+  const getClient = async (e:any) => {
     const customer = RandomCustomer()
-    // console.log(customer.name + ' chce kupić ' + customer.quantity+ ' ' + customer.needs)
-
     try {
       const res = await fetch("http://localhost:3001/api/customer", {
         method: 'POST',
@@ -69,24 +72,56 @@ export const SellProducts = () => {
         
 
     });
-    const ol = await res.json()
-    console.log(ol);
-
-
+    console.log(await res.json())
+    getCustomers()
+    
     } catch (err) {
       console.log(err);      
     }
 
+
+
     
 
   };
+
+  const sellSubmit = async (e:any) => {
+    e.preventDefault();
+    if (order) {
+      try {
+        const res = await fetch("http://localhost:3001/api/customer", {
+          method: 'DELETE',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              id: order.id,
+              name:order.name, 
+              quantity:order.quantity, 
+              needs:order.needs,
+              userId: userId,
+
+          } )
+          
+  
+      });
+      const message = await res.json()
+      setOrder(null)
+      getCustomers()
+      return <p>{message}</p>
+  
+      } catch (err) {
+        console.log(err);      
+      }
+    }
+   
+  }
    
     return (<>
-        <button onClick={handleSubmit}>generuj klienta za 100 monet</button>
-    <form onSubmit={handleSubmit}> 
+    <form onSubmit={sellSubmit}> 
        <div className="customers">
             {customers.map((customer:Customers) => 
-                <div className='customer'>
+                <div className='customer' key={customer.id}>
                     <div className='needs'>
                         <p>
                             <strong>
@@ -102,7 +137,14 @@ export const SellProducts = () => {
                     </div>
                     <img  className='picture' src={customer.picture}></img>
 
-                    <button type='submit' >Sprzedaj</button>
+                    <button  onClick={e => setOrder(
+                      {
+                        id: customer.id,
+                        name:customer.name,
+                        quantity:customer.quantity,
+                        needs: customer.needs,
+                    }
+                    )} >Sprzedaj</button>
 
                 </div>
                 )}
@@ -111,8 +153,10 @@ export const SellProducts = () => {
             
               
     </form>
+    <button className='getClientButton' onClick={getClient}>zachęć nowego klienta za 10 monet</button>
+    {/* <p>Nowy klient pojawi się za: 9:23minut</p> */}
+
     </>
 
       );
 }
-    

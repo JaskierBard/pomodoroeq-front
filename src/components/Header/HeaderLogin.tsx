@@ -10,7 +10,8 @@ export const HeaderLogin = () => {
   return (
     <>
         <header>
-          <NavLink  to="/"><h1>PomodoroEq</h1></NavLink>
+          <h1>PomodoroEq</h1>
+          <NavLink  to="/clock">Zegar</NavLink>
           <NavLink  to="/market">Market</NavLink>
           <NavLink  to="/history">Historia</NavLink>
           <NavLink  to="/login">Wyloguj</NavLink>
