@@ -3,7 +3,7 @@
     top: 10vh;
     right: 110vw;
     width: 64px;
-    height: 64px;
+    height: 70px;
     background-image: url('../../../public/assets/images/bag.png');
 }
 
@@ -18,11 +18,19 @@
 .eq-container{
 background-image: url('../../../public/assets/images/wood.jpg');
 box-shadow: 0 -5px 10px -2px rgba(0, 0, 0, 0.75);
-position: absolute;
+position: fixed;
 display: block; 
 bottom: 0px;
 font-size: 42px;
 width: 80vw;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    /* padding: 20px; */
+    text-align: center;
+  
 }
 
 ul{

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Sell.css'
 import { RandomCustomer } from '../../../functions/customersCreator'
 import { getUserId } from '../../../functions/getUserId';
+import { Spinner } from '../../../components/common/Spinner/Spinner';
 
 interface Customers {
     id: string;
@@ -20,6 +21,8 @@ export const SellProducts = () => {
   )
   const [order , setOrder] = useState<any>()
   const [userId , setUserId] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(false);
+
 
 
 
@@ -32,6 +35,8 @@ export const SellProducts = () => {
 
 
     const getCustomers = async () => {
+      setLoading(true);
+
         if (userId !== 0) {
          try {
            
@@ -46,12 +51,18 @@ export const SellProducts = () => {
          });
          const ol = await res.json()
          setCustomers(ol);
-         } catch (err) {
+         } finally {
+          setLoading(false)
+
          }
  
      }
  
        };
+
+       if(loading) {
+        return <Spinner/>
+    }
 
 
   const getClient = async (e:any) => {

@@ -2,62 +2,46 @@
   margin: 0;
   padding: 0;
   user-select: none;
-  font-family: "Akzidenz Grotesk BQ Medium", sans-serif;
-  color: #f1f1f1d2;
+  font-family:  sans-serif;
+  color: #fffbfbd2;
   text-decoration: none;
-  
-
 }
 
 body{
-  /* position: relative; */
-
-  background-color: #002007;
+  background-color: #3b775a;
   display: flex;
-  justify-content: center;  
-}
-.bgc{
-  height: 94vh;
-  position:fixed;
-
-  width: 80vw;
-  background-color: #649b80;
-  z-index: -1;
 }
 
 .form{
   position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+
   margin-top: 30vh;
   left: calc(50% - 300px);
   width: 600px;
   background-color: #286847;
-  border: 1px solid #64c78d;
+  border: 1px solid #b5c764;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
-  box-sizing: border-box;
-  color: #ffffff;
-  font-size: 16px;
   font-weight: 400;
-  padding: 5px 15px;
-  text-align: center;
-  justify-content: center;
+  
 }
 
 input{
   width: 300px;
   height: 30px;
   font-size: 30px;
-  background-color: #64c78d;
-  color: #ffffff;
+  background-color: #a0dab8;
 }
 
 
 header{
   display: flex;
-  justify-content:space-between;
-  border-radius: 2px;
-  width: 80vw;
-  height: 80px;
+    border-radius: 2px;
+  width: 100vw;
+  height: 70px;
   background-image: url('../public/assets/images/wood.jpg');
   box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.75);
 
@@ -70,97 +54,6 @@ h1{
   text-shadow:2px 2px  rgba(0, 0, 0, 0.582) ;
 }
 
-.Callendar{
-  position: absolute;
-
-  height: 94vh;
-  width: 150px;
-  background-color: rgba(0, 0, 0, 0.637);
-}
-
-.dayCallendar:first-child{
-  background-color: rgba(161, 146, 146, 0.267);
-
-}
-
-
-.dayCallendar{
-  display: flex;
-  height:  6.9%;
-  border: 1px solid green;
-  cursor: pointer;
-  list-style: none;
-}
-
-
-.dayCallendar strong{
-  justify-content:start;
-
-  font-size: 20px;
-}
-/* 
-.tomato{
-  display: flex;
-  justify-content: center;
-  width: 50px;
-  background-image: url('../public/assets/images/tomato.png');
-  background-size: contain;
-  font-size: 40px;
-} */
-
-.seed{
-  display: flex;
-  justify-content: center;
-  width: 50px;
-  background-image: url('../public/assets/images/seed.png');
-  background-size: contain;
-  font-size: 40px;
-}
-
-.dayCallendar div {
-  position: absolute;
-  display: flex;
-  /* justify-content:start; */
-  background-color: #286847;
-  width: 150px;
-  height: 30px;
-  margin-top: 30px;
-}
-
-.dayCallendar div img{
-  display: flex;
-}
-
-
-/* button{
-  margin-top: 20px;
-  margin-right: 5px;
-  background-color: #286847;
-  border: 1px solid #64c78d;
-box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
-box-sizing: border-box;
-color: #ffd8d8;
-cursor: pointer;
-font-size: 32px;
-font-weight: bold;
-width: 110px;
-text-align: center;
-transition: transform 150ms, box-shadow 150ms;
-
-} */
-
-/* button:hover {
-box-shadow: rgba(0, 0, 0, .35) 0 3px 9px 0;
-transform: translateY(-2px);
-} */
-
-footer{
-  position: absolute;
-  top: 97vh;
-  width: 80vw;
-  background-color: #28684760;
-}
-
 
 .container {
   position: absolute;
@@ -169,11 +62,9 @@ footer{
   width: 600px;
   background-color: #286847;
   border: 1px solid #64c78d;
-
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
-  color: #ffffff;
   font-size: 16px;
   font-weight: 400;
   padding: 5px 15px;

@@ -33,7 +33,7 @@ export const BuyProducts = () => {
     e.preventDefault();
     if (userId !== 0) {
     try {
-     const res =  await axios.post("http://localhost:3001/equipment/", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
+     const res =  await axios.post("http://localhost:3001/equipment/buy", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
      setMessage(res.data)
     //  setShowMessage(false)
 
