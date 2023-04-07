@@ -1,48 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import './Equipment.css'
 import { getUserId } from '../../functions/getUserId';
+import { getEquipment } from '../../functions/getEquipment';
 
 
 
 export const Equipment = () => {
     const [data, setData] = useState<any>(null);
+    // const [userId , setUserId] = useState<number>(0)
 
-    const [userId , setUserId] = useState<number>(0)
-
-
- 
-
-   
-  
     useEffect(() => {
-      setUserId(getUserId())
+      const AsyncFunction  = async () => {
+        // setUserId(await getUserId())
+        setData(await getEquipment())
+      }
+      AsyncFunction()
+      },[]);
 
-       getEq()
-      },[userId]);
 
 
-    const getEq = async () => {
-       if (userId !== 0) {
-        try {
-          
-         const res = await fetch(`http://localhost:3001/equipment/`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                userId: userId,
-            } )
-        });
-        const ol = await res.json()
-
-        setData(ol['0']);
-        } catch (err) {
-        }
-
-    }
-
-      };
     return (
         <>
         {data ? ( <>
