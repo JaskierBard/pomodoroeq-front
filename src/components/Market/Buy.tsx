@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getUserId } from '../../functions/getUserId';
-
 import './Market.css'
 import axios from 'axios';
+import { Message } from '../common/Message/Message';
 
 export const BuyProducts = () => {
   const [tomatoSeed , setTomatoSeed] = useState<string>('0')
@@ -10,16 +10,18 @@ export const BuyProducts = () => {
   const [pumpkinSeed , setPumpkinSeed] = useState<string>('0')
   const [value , setValue] = useState<number>(0)
   const [userId , setUserId] = useState<any | null>('')
+  const [message , setMessage] = useState<string>('')
+  const [showMessage , setShowMessage] = useState<boolean>(true)
 
-  const [purchase , setPurchase] = useState<number>(0)
 
 
- 
+  
 
   useEffect(() => {
     sumPrice()
-
     setUserId(getUserId())
+    
+    
   });
 
   const sumPrice = () =>  {
@@ -27,30 +29,29 @@ export const BuyProducts = () => {
     setValue(result)
   }
 
-
-
-
-
-  const handleSubmit = async (e:any) => {
+  const buySubmit = async (e:any) => {
     e.preventDefault();
     if (userId !== 0) {
-
     try {
-      const res = await axios.post("http://localhost:3001/api/equipment", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
-      setPurchase(res.data);
-  
+     const res =  await axios.post("http://localhost:3001/equipment/", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
+     setMessage(res.data)
+    //  setShowMessage(false)
+
     } catch (err) {
       console.log(err);      
     }
+
   }
   };
 
    
     return (   
-       <div className="seeds-market">
-              <form onSubmit={handleSubmit}> 
+      <>
+      <Message text={message} show={showMessage}/>
+       <div className="form">
+              <form onSubmit={buySubmit}> 
               <label >
-                <h2>Pomidor: {tomatoSeed}</h2><br/>
+                <h2>Nasiona pomidora: {tomatoSeed}</h2><br/>
                 <input
                     className='tomato'
                     type="range"
@@ -62,7 +63,7 @@ export const BuyProducts = () => {
                 />
               </label>
               <label>
-                <h2>Ogórek: {cucumberSeed}</h2><br/>
+                <h2>Nasiona ogórka: {cucumberSeed}</h2><br/>
                 <input
                   className='cucumber'
                   type="range"
@@ -75,7 +76,7 @@ export const BuyProducts = () => {
                 />
               </label>
               <label>
-                <h2>Dynia: {pumpkinSeed}</h2><br/>
+                <h2>Nasiona dyni: {pumpkinSeed}</h2><br/>
                 <input
                     className='pumpkin'
                     type="range"
@@ -90,6 +91,7 @@ export const BuyProducts = () => {
               <button type='submit'>Kup za {value} monet</button>
               </form>
             </div>
+            </>
       );
 }
     

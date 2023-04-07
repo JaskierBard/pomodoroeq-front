@@ -27,7 +27,7 @@ body{
 
 .form{
   position: absolute;
-  margin-top: 10vh;
+  margin-top: 30vh;
   left: calc(50% - 300px);
   width: 600px;
   background-color: #286847;
@@ -57,7 +57,7 @@ header{
   justify-content:space-between;
   border-radius: 2px;
   width: 80vw;
-  height: 90px;
+  height: 80px;
   background-image: url('../public/assets/images/wood.jpg');
   box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.75);
 
@@ -137,7 +137,6 @@ h1{
   margin-right: 5px;
   background-color: #286847;
   border: 1px solid #64c78d;
-border-radius: 4px;
 box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
 box-sizing: border-box;
 color: #ffd8d8;
@@ -170,6 +169,7 @@ footer{
   width: 600px;
   background-color: #286847;
   border: 1px solid #64c78d;
+
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
   box-sizing: border-box;
@@ -184,11 +184,15 @@ footer{
 
 
 a {
-  margin: 5px 5px 30px 5px;
+  margin: 15px 15px 5px 15px;
+  padding: 5px 35px 5px 35px;
 
-  
+  border: 3px solid #ffffff;
+  border-radius: .25rem;
+
+
   font-size: 40px;
-  background-color: #00000036;
+  background-color: #00000065;
   
 }
 a:hover {

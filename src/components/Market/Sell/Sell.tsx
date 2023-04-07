@@ -13,13 +13,12 @@ interface Customers {
   }
 
 export const SellProducts = () => {
-  const [customers , setCustomers] = useState<Customers[]>([
-    { id: '1', name: 'error' ,quantity: 1, needs: 'error', picture: 'error', needPicture:'error'},
-  ])
+  const [customers , setCustomers] = useState<Customers[]>(
+    [
+      { id: '1', name: 'error' ,quantity: 1, needs: 'error', picture: 'error', needPicture:'error'},
+    ]
+  )
   const [order , setOrder] = useState<any>()
-  // const [value , setValue] = useState<number>(0)
-
-
   const [userId , setUserId] = useState<number>(0)
 
 
@@ -36,7 +35,7 @@ export const SellProducts = () => {
         if (userId !== 0) {
          try {
            
-          const res = await fetch(`http://localhost:3001/api/customer`, {
+          const res = await fetch(`http://localhost:3001/customer/`, {
              method: 'PATCH',
              headers: {
                  'Content-Type': 'application/json',
@@ -58,7 +57,7 @@ export const SellProducts = () => {
   const getClient = async (e:any) => {
     const customer = RandomCustomer()
     try {
-      const res = await fetch("http://localhost:3001/api/customer", {
+      const res = await fetch("http://localhost:3001/customer/", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -89,7 +88,7 @@ export const SellProducts = () => {
     e.preventDefault();
     if (order) {
       try {
-        const res = await fetch("http://localhost:3001/api/customer", {
+        const res = await fetch("http://localhost:3001/customer", {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json',
@@ -135,9 +134,9 @@ export const SellProducts = () => {
                         </p>
 
                     </div>
-                    <img  className='picture' src={customer.picture}></img>
+                    <img  className='picture' src={customer.picture} alt='customer'></img>
 
-                    <button  onClick={e => setOrder(
+                    <button className='sellButton' onClick={e => setOrder(
                       {
                         id: customer.id,
                         name:customer.name,

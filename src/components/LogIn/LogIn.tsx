@@ -18,7 +18,7 @@ export const LogIn = () => {
 
     const refreshToken = async () => {
       try {
-        const res = await axios.post("http://localhost:3001/api/refresh", { token: user.refreshToken, id:user.userId });
+        const res = await axios.post("http://localhost:3001/user/refresh", { token: user.refreshToken, id:user.userId });
         setUser({
           ...user,
           accessToken: res.data.accessToken,
@@ -65,7 +65,7 @@ export const LogIn = () => {
     const handleSubmit = async (e:any) => {
         e.preventDefault();
         try {
-          const res = await axios.post("http://localhost:3001/api/login", { username, password });
+          const res = await axios.post("http://localhost:3001/user/login", { username, password });
           setUser(res.data);
 
           console.log(res.data)
@@ -83,7 +83,7 @@ export const LogIn = () => {
         console.log('usuwam dane ' + user.accessToken)
 
         try {
-          await axios.delete("http://localhost:3001/api/logout" , 
+          await axios.delete("http://localhost:3001/user/logout" , 
           { 
             headers: { authorization: "Bearer " + user.accessToken },
             data: { id: user.userId } }
@@ -100,19 +100,6 @@ export const LogIn = () => {
       return (
         
         <div >
-            {user ? ( <>
-              <HeaderLogin />
-
-              </>
-              
-
-      
-
-    ) : (
-
-      <HeaderLogout/>
-
-    )}
           {user  ? (<div className="container">
                   <h1>Jesteś pewien?</h1>
                    <button onClick={logout}>Tak</button>
@@ -121,7 +108,7 @@ export const LogIn = () => {
 
           </div>
           ) : (
-            
+            <div className="form">
               <form onSubmit={handleSubmit}>
                 <h1 className="formTitle">Login</h1>
                 <br />
@@ -140,6 +127,7 @@ export const LogIn = () => {
                   Login
                 </button>
               </form>
+              </div>
           )}
         </div>
       );

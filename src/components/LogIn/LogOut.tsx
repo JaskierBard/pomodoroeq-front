@@ -44,7 +44,7 @@ export const Logout = () => {
     const Logout = async () => {
         try {
 
-        await axios.post("http://localhost:3001/api/logout");
+        await axios.post("http://localhost:3001/user/logout");
         
         } catch (err) {
           console.log(err);

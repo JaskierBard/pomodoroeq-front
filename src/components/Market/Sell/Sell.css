@@ -11,7 +11,7 @@
   
   .buttons-container{
     position: absolute;
-
+    margin-top: 80px;
     display: flex;
 
     width: 80vw;
@@ -25,8 +25,8 @@
   }
   
   .customer{
-    width: 13vw;
-    margin-top: 20px;
+    margin: 2px;
+    width: 233px;
     height: 250px;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.315);
@@ -49,11 +49,13 @@
   
 
 .customers{
-  margin-top: 10vh;
+  margin-left: 2vw;
+  margin-top: 20vh;
   display: flex;
-  justify-content:space-between;
-  height: 70vh;
-  width: 80vw;
+  flex-wrap: wrap;
+  /* display: block; */
+  /* justify-content:space-between; */
+  width: 76vw;
   position: absolute;
  
 }
@@ -75,4 +77,11 @@ p{
   bottom: 10vh;
   left: 50%;
   
+}
+
+.sellButton{
+  top: -40px;
+  left: 122px;
+  border: 1px solid #000000;
+
 }

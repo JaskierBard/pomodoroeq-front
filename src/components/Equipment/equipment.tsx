@@ -25,7 +25,7 @@ export const Equipment = () => {
        if (userId !== 0) {
         try {
           
-         const res = await fetch(`http://localhost:3001/api/equipment`, {
+         const res = await fetch(`http://localhost:3001/equipment/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

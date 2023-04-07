@@ -24,7 +24,7 @@ export const Registration = () => {
         setLoading(true);
 
         try {
-            const res = await fetch(`http://localhost:3001/createUser`, {
+            const res = await fetch(`http://localhost:3001/user/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -44,12 +44,13 @@ export const Registration = () => {
         return <div>
                         <strong style={{backgroundColor: "yellow"}}>Account was created!</strong>
 
-            <LogIn/>
+            {/* <LogIn/> */}
             <strong style={{backgroundColor: "green"}}> You can log now!</strong>
         </div>
     }
 
-    return <form onSubmit={sendForm}>
+    return <div className="form">
+    <form onSubmit={sendForm}>
         <h1>Utwórz konto</h1>
         <p>
         <label>
@@ -84,4 +85,5 @@ export const Registration = () => {
         
         <button type="submit">Create</button>
     </form>
+    </div>
 };
