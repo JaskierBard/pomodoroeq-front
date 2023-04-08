@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { getUserId } from '../../functions/getUserId';
-import './Market.css'
+import './Buy.css'
 import axios from 'axios';
 import { Message } from '../common/Message/Message';
 
 export const BuyProducts = () => {
+  const [userId , setUserId] = useState<any | null>('')
+
   const [tomatoSeed , setTomatoSeed] = useState<string>('0')
   const [cucumberSeed , setCucumberSeed] = useState<string>('0')
   const [pumpkinSeed , setPumpkinSeed] = useState<string>('0')
+
   const [value , setValue] = useState<number>(0)
-  const [userId , setUserId] = useState<any | null>('')
   const [message , setMessage] = useState<string>('')
   const [showMessage , setShowMessage] = useState<boolean>(true)
 

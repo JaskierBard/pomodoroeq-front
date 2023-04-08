@@ -1,0 +1,57 @@
+  .customer{
+    margin: 2px;
+    width: 247px;
+    height: 250px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.315);
+    border: 3px solid #000000;
+  }
+  
+  .needs{
+    position: absolute;
+    margin-left: 5vw;
+    width: 128px;
+    height: 128px;
+    background-image: url('../../../public/assets/images/message.png');
+
+  }
+  
+  .picture {
+    margin-top: 100px;
+  }
+
+  
+
+.customers{
+  margin-left: 3vw;
+  margin-top: 15vh;
+  display: flex;
+  flex-wrap: wrap;
+  width: 94vw;
+  position: absolute;
+}
+
+p{
+  margin-left: 20px;
+  margin-top: 25px;
+  
+}
+
+.getClientButton {
+  position: absolute;
+  background-color: rgba(218, 165, 32, 0.555);
+  top: 80px;
+  left: 42%;
+  box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0;
+  border: 1px solid #000000;
+
+}
+
+.getClientButton:hover {
+  background-color: goldenrod;
+}
+
+.sellButton{
+  top: -40px;
+  border: 1px solid #000000;
+}

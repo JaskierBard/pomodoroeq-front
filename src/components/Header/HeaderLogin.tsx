@@ -12,8 +12,8 @@ export const HeaderLogin = () => {
         <header>
           <h1>PomodoroEq</h1>
           <NavLink  to="/clock">Zegar</NavLink>
-          <NavLink  to="/market">Market</NavLink>
-          <NavLink  to="/history">Historia</NavLink>
+          <NavLink  to="/buy">Kup nasiona</NavLink>
+          <NavLink  to="/sell">Sprzedaj warzywa</NavLink>
           <NavLink  to="/login">Wyloguj</NavLink>
       </header>
       <Equipment/>

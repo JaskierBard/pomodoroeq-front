@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Sell.css'
-import { RandomCustomer } from '../../../functions/customersCreator'
-import { getUserId } from '../../../functions/getUserId';
-import { Spinner } from '../../../components/common/Spinner/Spinner';
+import { RandomCustomer } from '../../functions/customersCreator'
+import { getUserId } from '../../functions/getUserId';
+import { Spinner } from '../../components/common/Spinner/Spinner';
 import { Customers } from "types";
 
 
