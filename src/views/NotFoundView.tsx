@@ -4,14 +4,12 @@ import { HeaderLogout } from "../components/Header/HeaderLogout";
 
 export const NotFoundViewLoggedOut = () => (
     <>
-        <HeaderLogout/>
         <h1 style={{position:"absolute", marginLeft:'170px', marginTop:'100px'}}>Zgubiłeś się? Spróbuj się zalogować lub utworzyć konto</h1>
     </>
 )
 
 export const NotFoundViewLoggedIn = () => (
     <>
-        <HeaderLogin/>
         <h1 style={{position:"absolute", marginLeft:'170px', marginTop:'100px'}}>Pomidory cię obserwują... Lepiej wróć na podstronę dla użytkowników.</h1>
     </>
 )

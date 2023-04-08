@@ -3,15 +3,8 @@ import './Sell.css'
 import { RandomCustomer } from '../../../functions/customersCreator'
 import { getUserId } from '../../../functions/getUserId';
 import { Spinner } from '../../../components/common/Spinner/Spinner';
+import { Customers } from "types";
 
-interface Customers {
-    id: string;
-    name: string;
-    quantity: number;
-    needs: string;
-    picture: string;
-    needPicture: string;
-  }
 
 export const SellProducts = () => {
   const [customers , setCustomers] = useState<Customers[]>(
