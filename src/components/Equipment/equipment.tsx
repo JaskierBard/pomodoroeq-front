@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './Equipment.css'
-import { getUserId } from '../../functions/getUserId';
 import { getEquipment } from '../../functions/getEquipment';
 
 
 
 export const Equipment = () => {
     const [data, setData] = useState<any>(null);
-    // const [userId , setUserId] = useState<number>(0)
 
     useEffect(() => {
       const AsyncFunction  = async () => {
-        // setUserId(await getUserId())
         setData(await getEquipment())
       }
       AsyncFunction()

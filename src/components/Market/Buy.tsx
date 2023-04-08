@@ -3,6 +3,7 @@ import { getUserId } from '../../functions/getUserId';
 import './Buy.css'
 import axios from 'axios';
 import { Message } from '../common/Message/Message';
+import { Equipment } from '../Equipment/Equipment';
 
 export const BuyProducts = () => {
   const [userId , setUserId] = useState<any | null>('')
@@ -12,8 +13,8 @@ export const BuyProducts = () => {
   const [pumpkinSeed , setPumpkinSeed] = useState<string>('0')
 
   const [value , setValue] = useState<number>(0)
-  const [message , setMessage] = useState<string>('')
-  const [showMessage , setShowMessage] = useState<boolean>(true)
+  // const [message , setMessage] = useState<string>('')
+  // const [showMessage , setShowMessage] = useState<boolean>(true)
 
 
 
@@ -22,9 +23,7 @@ export const BuyProducts = () => {
   useEffect(() => {
     sumPrice()
     setUserId(getUserId())
-    
-    
-  });
+  },[tomatoSeed, cucumberSeed, pumpkinSeed]);
 
   const sumPrice = () =>  {
     const result = (Number(tomatoSeed) * 2) + (Number(cucumberSeed) * 4) + (Number(pumpkinSeed) * 10)
@@ -32,12 +31,11 @@ export const BuyProducts = () => {
   }
 
   const buySubmit = async (e:any) => {
-    e.preventDefault();
+    // e.preventDefault();
     if (userId !== 0) {
     try {
      const res =  await axios.post("http://localhost:3001/equipment/buy", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
-     setMessage(res.data)
-    //  setShowMessage(false)
+    //  setMessage(res.data)
 
     } catch (err) {
       console.log(err);      
@@ -49,7 +47,6 @@ export const BuyProducts = () => {
    
     return (   
       <>
-      <Message text={message} show={showMessage}/>
        <div className="form">
               <form onSubmit={buySubmit}> 
               <label >
@@ -90,9 +87,11 @@ export const BuyProducts = () => {
                 />
               </label>
               <br />
-              <button type='submit'>Kup za {value} monet</button>
+              <button onClick={buySubmit}>Kup za {value} monet</button>
               </form>
             </div>
+            <Equipment/>
+
             </>
       );
 }

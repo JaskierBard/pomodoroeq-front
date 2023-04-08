@@ -16,7 +16,6 @@ export const HeaderLogin = () => {
           <NavLink  to="/sell">Sprzedaj warzywa</NavLink>
           <NavLink  to="/login">Wyloguj</NavLink>
       </header>
-      <Equipment/>
 
 
 

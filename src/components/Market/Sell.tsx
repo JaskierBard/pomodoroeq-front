@@ -4,6 +4,7 @@ import { RandomCustomer } from '../../functions/customersCreator'
 import { getUserId } from '../../functions/getUserId';
 import { Spinner } from '../../components/common/Spinner/Spinner';
 import { Customers } from "types";
+import { Equipment } from '../Equipment/Equipment';
 
 
 export const SellProducts = () => {
@@ -158,6 +159,8 @@ export const SellProducts = () => {
     </form>
     <button className='getClientButton' onClick={getClient}>zachęć nowego klienta za 10 monet</button>
     {/* <p>Nowy klient pojawi się za: 9:23minut</p> */}
+    <Equipment/>
+
 
     </>
 

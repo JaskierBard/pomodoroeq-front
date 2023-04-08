@@ -28,6 +28,11 @@ li{
     margin-left: 50px;
     margin-right: 50px;
     margin: 10px 15px 10px 15px;
+    border: 1px solid #000000;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0;
+
+
 
     text-align: center;
     flex: auto;

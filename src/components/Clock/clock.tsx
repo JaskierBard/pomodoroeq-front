@@ -3,14 +3,9 @@ import './Clock.css'
 import Countdown, { zeroPad } from 'react-countdown';
 import { getUserId } from '../../functions/getUserId';
 import { getSeed } from '../../functions/getEquipment';
+import { ClockInterface } from "types";
 
-export interface ClockInterface {
-  hours: number
-  minutes: number
-  seconds: number
-  completed: boolean
-  api: any
-}
+
 
 export const Clock = () => {
   const [choice, setChoice] = useState<boolean>(true);
@@ -87,6 +82,7 @@ export const Clock = () => {
 
     } else {
       setChoice(true)
+      setWegetable('')
       getReward()
       window.alert('Time is out!')
       return <span>Time is out!</span>;
