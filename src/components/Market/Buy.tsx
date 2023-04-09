@@ -13,7 +13,7 @@ export const BuyProducts = () => {
   const [pumpkinSeed , setPumpkinSeed] = useState<string>('0')
 
   const [value , setValue] = useState<number>(0)
-  // const [message , setMessage] = useState<string>('')
+  const [message , setMessage] = useState<string>('')
   // const [showMessage , setShowMessage] = useState<boolean>(true)
 
 
@@ -31,11 +31,15 @@ export const BuyProducts = () => {
   }
 
   const buySubmit = async (e:any) => {
-    // e.preventDefault();
+    e.preventDefault();
     if (userId !== 0) {
     try {
      const res =  await axios.post("http://localhost:3001/equipment/buy", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
     //  setMessage(res.data)
+    setPumpkinSeed('0')
+    setTomatoSeed('0')
+    setCucumberSeed('0')
+    setMessage(' zrobić z res.data')
 
     } catch (err) {
       console.log(err);      
@@ -87,10 +91,10 @@ export const BuyProducts = () => {
                 />
               </label>
               <br />
-              <button onClick={buySubmit}>Kup za {value} monet</button>
+              <button>Kup za {value} monet</button>
               </form>
             </div>
-            <Equipment/>
+            <Equipment message={message}/>
 
             </>
       );

@@ -4,6 +4,7 @@ import Countdown, { zeroPad } from 'react-countdown';
 import { getUserId } from '../../functions/getUserId';
 import { getSeed } from '../../functions/getEquipment';
 import { ClockInterface } from "types";
+import { Equipment } from '../Equipment/Equipment';
 
 
 
@@ -114,7 +115,8 @@ export const Clock = () => {
   
       
    
-}</>
+}    <Equipment/>
+</>
 }
 
 

@@ -2,22 +2,33 @@ import React, { useEffect, useState } from 'react';
 import './Equipment.css'
 import { getEquipment } from '../../functions/getEquipment';
 
+interface Props {
+  message?: string | number
+}
 
-
-export const Equipment = () => {
+export const Equipment = (props: Props) => {
     const [data, setData] = useState<any>(null);
+    const [message, setMessage] = useState<any>(null);
+
 
     useEffect(() => {
+      setMessage(props.message)
+
       const AsyncFunction  = async () => {
         setData(await getEquipment())
       }
+      
+
+      
       AsyncFunction()
-      },[]);
+      },[props.message]);
 
 
 
     return (
         <>
+         <h1>Wydano:{props.message}</h1>
+
         {data ? ( <>
             <div className='eq-container'>
             <ul>
@@ -29,7 +40,7 @@ export const Equipment = () => {
                 <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.pumpkinSeed}</li>
             </ul>
             </div>
-                        <div className='wallet'>{data.money} <img src="./assets/images/coin.png" alt="" /></div>
+            <div className='wallet'>{data.money} <img src="./assets/images/coin.png" alt="" /></div>
 
             </>
             
