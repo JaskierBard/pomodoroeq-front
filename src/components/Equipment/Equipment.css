@@ -4,15 +4,15 @@
 background-image: url('../../../public/assets/images/wood.jpg');
 box-shadow: 0 -5px 10px -2px rgba(0, 0, 0, 0.75);
 position: fixed;
-display: block; 
+/* display: block;  */
 bottom: 0px;
 font-size: 40px;
 /* width: 80vw; */
     bottom: 0;
-    left: 0;
+    /* left: 0; */
     width: 100%;
-    background-color: #333;
-    color: #fff;
+    /* background-color: #333; */
+    /* color: #fff; */
     text-align: center;
 }
 
@@ -21,38 +21,27 @@ ul{
     display: flex; 
 
 }
-li{
-    width: 120px;
-    list-style-type: none;
-    background-color: #0000008c;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin: 10px 15px 10px 15px;
-    border: 1px solid #000000;
-    border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0;
 
-
-
-    text-align: center;
-    flex: auto;
-}
 
 li:hover{
     cursor: pointer;
 }
 
 .wallet{
-    margin: 10px 15px 10px 15px;
-    padding: 5px 35px 5px 35px;
-    background-color: rgba(240, 232, 160, 0.267);
-    box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0;
-    background-color: #0000008c;
+  
+    border: 2px solid #d4d800;
+
+
+
+}
+
+.message{
     position: absolute;
-    top: 10px;
-    border: 1px solid #d4d800;
-    border-radius: .25rem;
-    font-size: 30px;
+    font-size: 32px;
+    bottom: 70px;
+    background-color: #0000006c;
+    /* box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0; */
 
-
+    width: 100%;
+    right: 0px;
 }

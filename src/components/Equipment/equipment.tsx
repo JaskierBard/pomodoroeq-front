@@ -12,8 +12,7 @@ export const Equipment = (props: Props) => {
 
 
     useEffect(() => {
-      setMessage(props.message)
-
+      // setMessage(props.message)
       const AsyncFunction  = async () => {
         setData(await getEquipment())
       }
@@ -27,7 +26,7 @@ export const Equipment = (props: Props) => {
 
     return (
         <>
-         <h1>Wydano:{props.message}</h1>
+         <p className='message'>{props.message}</p>
 
         {data ? ( <>
             <div className='eq-container'>
@@ -38,9 +37,10 @@ export const Equipment = (props: Props) => {
                 <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.tomatoSeed}</li>
                 <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.cucumberSeed}</li>
                 <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.pumpkinSeed}</li>
+                <div className='wallet'>{data.money} <img src="./assets/images/coin.png" alt="" /></div>
+
             </ul>
             </div>
-            <div className='wallet'>{data.money} <img src="./assets/images/coin.png" alt="" /></div>
 
             </>
             

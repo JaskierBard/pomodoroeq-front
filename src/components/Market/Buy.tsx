@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { getUserId } from '../../functions/getUserId';
 import './Buy.css'
 import axios from 'axios';
-import { Message } from '../common/Message/Message';
 import { Equipment } from '../Equipment/Equipment';
 
 export const BuyProducts = () => {
@@ -14,7 +13,6 @@ export const BuyProducts = () => {
 
   const [value , setValue] = useState<number>(0)
   const [message , setMessage] = useState<string>('')
-  // const [showMessage , setShowMessage] = useState<boolean>(true)
 
 
 
@@ -35,11 +33,15 @@ export const BuyProducts = () => {
     if (userId !== 0) {
     try {
      const res =  await axios.post("http://localhost:3001/equipment/buy", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
-    //  setMessage(res.data)
     setPumpkinSeed('0')
     setTomatoSeed('0')
     setCucumberSeed('0')
-    setMessage(' zrobić z res.data')
+    setMessage('kupiłeś nasiona')
+    const myInterval = setInterval(() => setMessage(''), 2000)
+    setTimeout(() => {
+      clearInterval(myInterval);
+  }, 3000);
+
 
     } catch (err) {
       console.log(err);      
