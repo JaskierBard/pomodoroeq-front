@@ -1,1 +1,1 @@
-![Moje zdjęcie](screens/2.png)
+![Moje zdjęcie](assets/screens/2.png)
