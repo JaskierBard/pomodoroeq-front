@@ -1,0 +1,86 @@
+.clock {
+    position: absolute;
+    margin-top: 10vh;
+    left: calc(50% - 300px);
+    display: flex;
+    width: 600px;
+    background-color: #286847;
+    border: 1px solid #64c78d;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #ffd8d8;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px 15px;
+    text-align: center;
+    justify-content: center;
+  }
+
+.clock span {
+    font-size: 90px;
+    font-weight: bold;
+    cursor:default;
+    margin-right: 20px;
+}
+
+.bgc2 {
+  height: 100vh;
+  z-index: 2;
+  width: 100vw;
+  top: 0px;
+  position:fixed;
+    background-image: url('../../../public/assets/images/wood.jpg');
+    background-size:contain;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-name: slide-down;
+
+  background-position: 0px -30vh;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+@keyframes slide-down {
+  from {
+    background-position: 0vh -80vh;
+  }
+  to {
+    background-position: 0vh -30vh;
+  }
+}
+
+
+.bgc3 {
+  height: 100vh;
+  z-index: 2;
+
+  width: 100vw;
+  top: 0px;
+  position:fixed;
+    background-image: url('../../../public/assets/images/wood.jpg');
+    background-size:contain;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-name: slide-up;
+
+  background-position: 0px 50vh;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+@keyframes slide-up {
+  from {
+    background-position: 0vh 100vh;
+  }
+  to {
+    background-position: 0vh 50vh;
+  }
+}
+
+
+
+.option {
+  margin-top: 10px;
+  width: 100%;
+}

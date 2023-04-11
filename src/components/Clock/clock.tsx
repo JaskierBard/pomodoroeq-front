@@ -1,45 +1,117 @@
-import React, { useState } from 'react';
-import {ClockInterface} from 'types'
-import Countdown, { calcTimeDelta, zeroPad } from 'react-countdown';
+import React, { useEffect, useState } from 'react';
+import './Clock.css'
+import Countdown, { zeroPad } from 'react-countdown';
+import { getUserId } from '../../functions/getUserId';
+import { getSeed } from '../../functions/getEquipment';
+import { ClockInterface } from "types";
+import { Equipment } from '../Equipment/Equipment';
+
 
 
 export const Clock = () => {
-  const learningTime = (Date.now() +1000  * 60 * 25)
+  const [choice, setChoice] = useState<boolean>(true);
+  const [wegetable, setWegetable] = useState<string>('');
+  const [userId , setUserId] = useState<number>(0)
 
-  const [pause, setPause] = useState<boolean>(true);
-  const [timeLeft, setTimeLeft] = useState<number>(0);
+  useEffect(() => {
+    setUserId(getUserId())
+    const AsyncFunction  = async () => {
+      if (1 < await getSeed(wegetable)) {
+        setChoice(false)
+      } else {
+        console.log('nie masz wystarczająco nasion!')
+      }
+    }
+    AsyncFunction()
 
-  const start = () => {
-    setTimeLeft(timeLeft)
-  }
+  
+    },[wegetable]);
 
-  const tick = () => {
-    setTimeLeft(timeLeft + 1000)
-  }
 
-  const renderer = ({completed, api}: ClockInterface) => {
+
+    const getReward = async () => {
+      try {
+        const res = await fetch("http://localhost:3001/equipment/reward/", {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              needs: wegetable,
+              userId: userId
+          } )
+          
+  
+      });
+      console.log(await res.json())
+      
+      } catch (err) {
+        console.log(err);      
+      }
+    }
+
+  const renderer = ({completed, minutes, seconds, api}:ClockInterface) => {
+
+
+
 
     if (!completed) {
-      if(!pause)  {
-        api.start()
-        return <span>{zeroPad(calcTimeDelta(learningTime -  timeLeft).minutes)}:{zeroPad(calcTimeDelta( learningTime -  timeLeft).seconds)}</span>;
-  
+      document.title = `${zeroPad(minutes)} minutes left`;
+
+      if (api.isStopped()) {
+        return <>
+          <span >{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+          <button onClick={() => api.start()}>Start</button>
+          <button onDoubleClick={() => api.stop()}>Reset</button>
+        </> 
       } else {
-        api.pause()
-        return <span>{zeroPad(calcTimeDelta((learningTime -  timeLeft)).minutes)}:{zeroPad(calcTimeDelta((learningTime -  timeLeft)).seconds)}</span>;
+        return <div className='bgc2'>
+          <div className='bgc3'>
+          <div className='container'>
+          <span >{zeroPad(minutes)}:{zeroPad(seconds)}</span>
+          <button onClick={() => api.pause()}>Pauza</button>
+          <button onDoubleClick={() => api.stop()}>Reset</button>
+          </div>
+          </div>
+        </div> 
       }
 
     } else {
+      setChoice(true)
+      setWegetable('')
+        getReward()
+        window.alert('Time is out!')
+      
+      
       return <span>Time is out!</span>;
     };
   };
 
-  return <>
-    <div className='clock'>
-      <Countdown date={learningTime} renderer={renderer} onStart={start} onTick={tick} autoStart={false} controlled={false}></Countdown>
-      <button onClick={() =>setPause(!pause)}>Click!</button>
-      <button onClick={() =>setTimeLeft(0)}>Reset</button>
-    </div>
-  </>
+  
+
+  return <> { choice ? (<div className="form">
+    <h1>Co chcesz zasadzić?</h1>
+    <button className="option" onClick={ () => setWegetable('tomato') }>
+      <img src="./assets/images/tomato.png" alt="Obrazek 1"/>
+    </button>
+    <button className="option" onClick={ () => setWegetable('cucumber')}>
+      <img src="./assets/images/cucumber.png" alt="Obrazek 2"/>
+    </button>
+    <button className="option" onClick={ () => setWegetable('pumpkin')}>
+      <img src="./assets/images/pumpkin.png" alt="Obrazek 3"/>
+    </button>
+</div>) : ( <div className='clock'>
+      <Countdown 
+        date={Date.now() + 1000  * 60 * 25}
+        renderer={renderer}
+        autoStart={false}
+      ></Countdown>
+    </div>)
+  
+      
+   
+}    <Equipment/>
+</>
 }
+
 
