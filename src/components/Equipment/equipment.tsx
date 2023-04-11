@@ -8,11 +8,9 @@ interface Props {
 
 export const Equipment = (props: Props) => {
     const [data, setData] = useState<any>(null);
-    const [message, setMessage] = useState<any>(null);
 
 
     useEffect(() => {
-      // setMessage(props.message)
       const AsyncFunction  = async () => {
         setData(await getEquipment())
       }
@@ -35,8 +33,8 @@ export const Equipment = (props: Props) => {
                 <li><img src="./assets/images/cucumber.png" alt="" />{data.cucumber}</li>
                 <li><img src="./assets/images/pumpkin.png" alt="" />{data.pumpkin}</li>
                 <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.tomatoSeed}</li>
-                <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.cucumberSeed}</li>
-                <li><img src="./assets/images/tomato-seed.png" alt="nasiona pomidora" />{data.pumpkinSeed}</li>
+                <li><img src="./assets/images/cucumber-seed.png" alt="nasiona ogórka" />{data.cucumberSeed}</li>
+                <li><img src="./assets/images/pumpkin-seed.png" alt="nasiona dyni" />{data.pumpkinSeed}</li>
                 <div className='wallet'>{data.money} <img src="./assets/images/coin.png" alt="" /></div>
 
             </ul>

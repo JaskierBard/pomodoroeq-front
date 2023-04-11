@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Clock.css'
 import Countdown, { zeroPad } from 'react-countdown';
 import { getUserId } from '../../functions/getUserId';
@@ -10,19 +10,14 @@ import { Equipment } from '../Equipment/Equipment';
 
 export const Clock = () => {
   const [choice, setChoice] = useState<boolean>(true);
-  const [wegetable, setWegetable] = useState<any>('');
+  const [wegetable, setWegetable] = useState<string>('');
   const [userId , setUserId] = useState<number>(0)
 
-
- 
-    
   useEffect(() => {
     setUserId(getUserId())
     const AsyncFunction  = async () => {
       if (1 < await getSeed(wegetable)) {
         setChoice(false)
-        
-
       } else {
         console.log('nie masz wystarczająco nasion!')
       }
