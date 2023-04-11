@@ -34,13 +34,13 @@ input{
   width: 300px;
   height: 30px;
   font-size: 30px;
+  margin-bottom: 10px;
   background-color: #a0dab8;
 }
 
 
 header{
   font-size: 40px;
-
   display: flex;
   border-radius: 2px;
   width: 100vw;
@@ -78,31 +78,24 @@ h1{
 
 
 a , li, .wallet{
-     /* width: 120px; */
-     list-style-type: none;
-     background-color: #0000008c;
-     /* margin-left: 50px; */
-     /* margin-right: 50px; */
-     margin: 10px 15px 10px 15px;
-     border: 1px solid #000000;
-     border-radius: .25rem;
-     box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0;
- 
- 
- 
-     text-align: center;
-     flex: auto;
-  
+  list-style-type: none;
+  background-color: #0000008c;
+  margin: 10px 15px 10px 15px;
+  border: 1px solid #000000;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 1) 0 2px 4px 0;
+  text-align: center;
+  flex: auto;
 }
+
 a:hover {
   color: #ffffff;
   box-shadow: rgba(1, 1, 1, 0) 3px 1px 3px 3px\;
 }
 
-
-/* CSS */
 button {
   margin-right: 5px;
+  margin-bottom: 10px;
   align-items: center;
   background-clip: padding-box;
   background-color: #348058;

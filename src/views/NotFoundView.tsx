@@ -1,6 +1,5 @@
 import React from "react";
-import { HeaderLogin } from "../components/Header/HeaderLogin";
-import { HeaderLogout } from "../components/Header/HeaderLogout";
+
 
 export const NotFoundViewLoggedOut = () => (
     <>
@@ -14,6 +13,3 @@ export const NotFoundViewLoggedIn = () => (
     </>
 )
     
-
-
-

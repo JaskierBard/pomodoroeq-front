@@ -102,9 +102,7 @@ export const Clock = () => {
     </button>
 </div>) : ( <div className='clock'>
       <Countdown 
-        // date={Date.now() + 1000  * 60 * 25}
-        date={Date.now() + 1000   * 5}
-
+        date={Date.now() + 1000  * 60 * 25}
         renderer={renderer}
         autoStart={false}
       ></Countdown>

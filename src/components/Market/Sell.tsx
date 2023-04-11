@@ -148,7 +148,6 @@ export const SellProducts = () => {
               
     </form>
     <button className='getClientButton' onClick={getClient}>zachęć nowego klienta za 10 monet</button>
-    {/* <p>Nowy klient pojawi się za: 9:23minut</p> */}
     <Equipment message={message}/>
 
 

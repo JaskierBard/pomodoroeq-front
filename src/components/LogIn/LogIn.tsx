@@ -114,12 +114,12 @@ export const LogIn = () => {
                 <br />
                 <input
                   type="text"
-                  placeholder="username"
+                  placeholder="nazwa użytkownika"
                   onChange={(e) => setUsername(e.target.value)}
                 />
                 <input
                   type="current-password"
-                  placeholder="password"
+                  placeholder="hasło"
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />

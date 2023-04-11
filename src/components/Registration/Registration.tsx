@@ -8,7 +8,6 @@ export const Registration = () => {
         password: '',
     });
 
-    const [loading, setLoading] = useState<boolean>(false);
     const [resultInfo, setResultInfo] = useState<string | null>(null)
 
     const updateForm = (key: string, value:any) => {
@@ -21,7 +20,6 @@ export const Registration = () => {
     const sendForm = async(e: FormEvent) => {
         e.preventDefault();
 
-        setLoading(true);
 
         try {
             const res = await fetch(`http://localhost:3001/user/createUser`, {
@@ -34,7 +32,6 @@ export const Registration = () => {
         const data = await res.json();
         setResultInfo(`${data.name} added with ID ${data.id}`);
         } finally {
-            setLoading(false)
 
         }
     }
@@ -42,9 +39,7 @@ export const Registration = () => {
 
     if (resultInfo !==null) {
         return <div>
-                        <strong style={{backgroundColor: "yellow"}}>Account was created!</strong>
-
-            {/* <LogIn/> */}
+            <strong style={{backgroundColor: "green"}}>Account was created!</strong>
             <strong style={{backgroundColor: "green"}}> You can log now!</strong>
         </div>
     }
@@ -83,7 +78,7 @@ export const Registration = () => {
         </label>
         </p>  
         
-        <button type="submit">Create</button>
+        <button type="submit">Utwórz konto</button>
     </form>
     </div>
 };
