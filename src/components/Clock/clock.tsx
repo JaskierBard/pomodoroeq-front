@@ -79,8 +79,10 @@ export const Clock = () => {
     } else {
       setChoice(true)
       setWegetable('')
-      getReward()
-      window.alert('Time is out!')
+        getReward()
+        window.alert('Time is out!')
+      
+      
       return <span>Time is out!</span>;
     };
   };

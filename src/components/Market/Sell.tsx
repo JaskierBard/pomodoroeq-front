@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './Sell.css'
 import { RandomCustomer } from '../../functions/customersCreator'
 import { getUserId } from '../../functions/getUserId';
-import { Spinner } from '../../components/common/Spinner/Spinner';
 import { Customers } from "types";
 import { Equipment } from '../Equipment/Equipment';
 
@@ -15,25 +14,18 @@ export const SellProducts = () => {
   )
   const [order , setOrder] = useState<any>()
   const [userId , setUserId] = useState<number>(0)
-  const [loading, setLoading] = useState<boolean>(false);
-
-
-
+  const [message , setMessage] = useState<string>('')
 
   useEffect(() => {
     setUserId(getUserId())
     getCustomers()
     },[userId]);
 
-  
-
-
-    const getCustomers = async () => {
-      setLoading(true);
+  const getCustomers = async () => {
+      
 
         if (userId !== 0) {
          try {
-           
           const res = await fetch(`http://localhost:3001/customer/`, {
              method: 'PATCH',
              headers: {
@@ -43,26 +35,22 @@ export const SellProducts = () => {
                  userId: userId,
              } )
          });
-         const ol = await res.json()
-         setCustomers(ol);
+         const data = await res.json()
+         setCustomers(data);
          } finally {
-          setLoading(false)
-
          }
  
      }
  
        };
 
-       if(loading) {
-        return <Spinner/>
-    }
+       
 
 
   const getClient = async (e:any) => {
     const customer = RandomCustomer()
     try {
-      const res = await fetch("http://localhost:3001/customer/", {
+       await fetch("http://localhost:3001/customer/", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -76,7 +64,6 @@ export const SellProducts = () => {
         
 
     });
-    console.log(await res.json())
     getCustomers()
     
     } catch (err) {
@@ -112,8 +99,11 @@ export const SellProducts = () => {
       const message = await res.json()
       setOrder(null)
       getCustomers()
-      return <p>{message}</p>
-  
+      setMessage('sprzedałeś warzywa')
+      const myInterval = setInterval(() => setMessage(''), 2000)
+      setTimeout(() => {
+        clearInterval(myInterval);
+      }, 3000);  
       } catch (err) {
         console.log(err);      
       }
@@ -159,7 +149,7 @@ export const SellProducts = () => {
     </form>
     <button className='getClientButton' onClick={getClient}>zachęć nowego klienta za 10 monet</button>
     {/* <p>Nowy klient pojawi się za: 9:23minut</p> */}
-    <Equipment/>
+    <Equipment message={message}/>
 
 
     </>

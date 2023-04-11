@@ -16,7 +16,6 @@ export const getEquipment = async () => {
      });
      const data = await res.json()
 
-     console.log(data[0])
      return data[0];
      } catch (err) {
      }
