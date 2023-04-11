@@ -26,4 +26,3 @@ Projekt zawiera: <br/>
 
 
 ikony do projektu pobrałem ze strony : https://smashicons.com/
-<br/>
