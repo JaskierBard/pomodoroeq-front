@@ -1,5 +1,4 @@
 import React, { FormEvent, useState } from "react";
-import { LogIn } from "../LogIn/LogIn";
 
 export const Registration = () => {
     const [form, setForm] = useState<any>({
@@ -7,7 +6,6 @@ export const Registration = () => {
         mail: '',
         password: '',
     });
-
     const [resultInfo, setResultInfo] = useState<string | null>(null)
 
     const updateForm = (key: string, value:any) => {
@@ -19,8 +17,6 @@ export const Registration = () => {
 
     const sendForm = async(e: FormEvent) => {
         e.preventDefault();
-
-
         try {
             const res = await fetch(`http://localhost:3001/user/createUser`, {
             method: 'POST',
@@ -32,10 +28,8 @@ export const Registration = () => {
         const data = await res.json();
         setResultInfo(`${data.name} added with ID ${data.id}`);
         } finally {
-
         }
     }
-
 
     if (resultInfo !==null) {
         return <div>

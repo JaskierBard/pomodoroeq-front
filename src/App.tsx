@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import {Route, Routes} from "react-router-dom";
 import { LogIn } from './components/LogIn/LogIn';
 import { NotFoundViewLoggedIn, NotFoundViewLoggedOut } from './views/NotFoundView';
-
 import { getUserId } from './functions/getUserId';
 import { HeaderLogin } from './components/Header/HeaderLogin';
 import { HeaderLogout } from './components/Header/HeaderLogout';
 import { Registration } from './components/Registration/Registration';
-import { Clock } from './components/Clock/Clock';
 import { BuyProducts } from './components/Market/Buy';
 import { SellProducts } from './components/Market/Sell';
+import { Clock } from './components/Clock/Cock';
 
 export const App = () => {
     const [isUser, setIsUser] = useState<any>(null);

@@ -6,11 +6,9 @@ import { Equipment } from '../Equipment/Equipment';
 
 export const BuyProducts = () => {
   const [userId , setUserId] = useState<string | null>('')
-
   const [tomatoSeed , setTomatoSeed] = useState<string>('0')
   const [cucumberSeed , setCucumberSeed] = useState<string>('0')
   const [pumpkinSeed , setPumpkinSeed] = useState<string>('0')
-
   const [value , setValue] = useState<number>(0)
   const [message , setMessage] = useState<string>('')
 
@@ -22,13 +20,13 @@ export const BuyProducts = () => {
   const sumPrice = () =>  {
     const result = (Number(tomatoSeed) * 2) + (Number(cucumberSeed) * 4) + (Number(pumpkinSeed) * 10)
     setValue(result)
-  }
+  };
 
   const buySubmit = async (e:FormEvent) => {
     e.preventDefault();
     if (userId !== '') {
     try {
-     const res =  await axios.post("http://localhost:3001/equipment/buy", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
+    await axios.post("http://localhost:3001/equipment/buy", { tomatoSeed, cucumberSeed, pumpkinSeed, value, userId });
     setPumpkinSeed('0')
     setTomatoSeed('0')
     setCucumberSeed('0')
@@ -41,7 +39,7 @@ export const BuyProducts = () => {
 
     } catch (err) {
       console.log(err);      
-    }
+    };
   };
   };
 

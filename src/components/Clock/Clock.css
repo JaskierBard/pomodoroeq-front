@@ -24,21 +24,23 @@
     margin-right: 20px;
 }
 
-.bgc2 {
+.bgc2, .bgc3{
   height: 100vh;
   z-index: 2;
   width: 100vw;
   top: 0px;
   position:fixed;
-    background-image: url('../../../public/assets/images/wood.jpg');
-    background-size:contain;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
-    animation-name: slide-down;
-
-  background-position: 0px -30vh;
+  background-image: url('../../../public/assets/images/wood.jpg');
+  background-size:contain;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
   background-repeat: no-repeat;
   background-size: 100% auto;
+}
+
+.bgc2 {
+  animation-name: slide-down;
+  background-position: 0px -30vh;
 }
 
 @keyframes slide-down {
@@ -50,23 +52,9 @@
   }
 }
 
-
 .bgc3 {
-  height: 100vh;
-  z-index: 2;
-
-  width: 100vw;
-  top: 0px;
-  position:fixed;
-    background-image: url('../../../public/assets/images/wood.jpg');
-    background-size:contain;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
-    animation-name: slide-up;
-
+  animation-name: slide-up;
   background-position: 0px 50vh;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
 }
 
 @keyframes slide-up {
@@ -77,8 +65,6 @@
     background-position: 0vh 50vh;
   }
 }
-
-
 
 .option {
   margin-top: 10px;

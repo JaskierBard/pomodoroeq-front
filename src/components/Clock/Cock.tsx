@@ -6,8 +6,6 @@ import { getSeed } from '../../functions/getEquipment';
 import { ClockInterface } from "types";
 import { Equipment } from '../Equipment/Equipment';
 
-
-
 export const Clock = () => {
   const [choice, setChoice] = useState<boolean>(true);
   const [wegetable, setWegetable] = useState<string>('');
@@ -18,20 +16,14 @@ export const Clock = () => {
     const AsyncFunction  = async () => {
       if (1 < await getSeed(wegetable)) {
         setChoice(false)
-      } else {
-        console.log('nie masz wystarczająco nasion!')
       }
     }
     AsyncFunction()
-
-  
     },[wegetable]);
-
-
 
     const getReward = async () => {
       try {
-        const res = await fetch("http://localhost:3001/equipment/reward/", {
+        await fetch("http://localhost:3001/equipment/reward/", {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -40,20 +32,12 @@ export const Clock = () => {
               needs: wegetable,
               userId: userId
           } )
-          
-  
-      });
-      console.log(await res.json())
-      
+      });      
       } catch (err) {
         console.log(err);      
       }
     }
-
   const renderer = ({completed, minutes, seconds, api}:ClockInterface) => {
-
-
-
 
     if (!completed) {
       document.title = `${zeroPad(minutes)} minutes left`;
@@ -81,14 +65,11 @@ export const Clock = () => {
       setWegetable('')
         getReward()
         window.alert('Time is out!')
-      
-      
       return <span>Time is out!</span>;
     };
   };
 
   
-
   return <> { choice ? (<div className="form">
     <h1>Co chcesz zasadzić?</h1>
     <button className="option" onClick={ () => setWegetable('tomato') }>
@@ -107,11 +88,9 @@ export const Clock = () => {
         autoStart={false}
       ></Countdown>
     </div>)
-  
-      
-   
-}    <Equipment/>
-</>
+  }    
+    <Equipment/>
+  </>
 }
 
 

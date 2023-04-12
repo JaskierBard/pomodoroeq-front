@@ -5,7 +5,6 @@ import { getUserId } from '../../functions/getUserId';
 import { Customers } from "types";
 import { Equipment } from '../Equipment/Equipment';
 
-
 export const SellProducts = () => {
   const [customers , setCustomers] = useState<Customers[]>(
     [
@@ -22,30 +21,23 @@ export const SellProducts = () => {
     },[userId]);
 
   const getCustomers = async () => {
-      
-
-        if (userId !== 0) {
-         try {
-          const res = await fetch(`http://localhost:3001/customer/`, {
-             method: 'PATCH',
-             headers: {
-                 'Content-Type': 'application/json',
-             },
-             body: JSON.stringify({
-                 userId: userId,
-             } )
+    if (userId !== 0) {
+      try {
+        const res = await fetch(`http://localhost:3001/customer/`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+            body: JSON.stringify({
+            userId: userId,
+          })
          });
-         const data = await res.json()
-         setCustomers(data);
-         } finally {
-         }
- 
-     }
- 
-       };
-
-       
-
+        const data = await res.json()
+        setCustomers(data);
+      } finally {
+    }
+  }
+  };
 
   const getClient = async (e:any) => {
     const customer = RandomCustomer()
@@ -60,20 +52,12 @@ export const SellProducts = () => {
             quantity:customer.quantity, 
             needs:customer.needs,
             user_id: userId
-        } )
-        
-
+        })
     });
     getCustomers()
-    
     } catch (err) {
       console.log(err);      
     }
-
-
-
-    
-
   };
 
   const sellSubmit = async (e:any) => {
@@ -91,12 +75,9 @@ export const SellProducts = () => {
               quantity:order.quantity, 
               needs:order.needs,
               userId: userId,
-
-          } )
-          
-  
+          })
       });
-      const message = await res.json()
+      await res.json()
       setOrder(null)
       getCustomers()
       setMessage('sprzedałeś warzywa')
@@ -111,47 +92,37 @@ export const SellProducts = () => {
    
   }
    
-    return (<>
+  return (<>
     <form onSubmit={sellSubmit}> 
-       <div className="customers">
-            {customers.map((customer:Customers) => 
-                <div className='customer' key={customer.id}>
-                    <div className='needs'>
-                        <p>
-                            <strong>
-                                {customer.name +' '} 
-                            </strong>
-                            chce kupić  
-                            {' ' +customer.quantity}
-                            <br />
-                            <img  src={customer.needPicture} alt="customer" />
-
-                        </p>
-
-                    </div>
-                    <img  className='picture' src={customer.picture} alt='customer'></img>
-
-                    <button className='sellButton' onClick={e => setOrder(
-                      {
-                        id: customer.id,
-                        name:customer.name,
-                        quantity:customer.quantity,
-                        needs: customer.needs,
-                    }
-                    )} >Sprzedaj</button>
-
-                </div>
-                )}
-
-        </div>
-            
-              
+      <div className="customers">
+        {customers.map((customer:Customers) => 
+          <div className='customer' key={customer.id}>
+            <div className='needs'>
+              <p>
+                <strong>
+                  {customer.name +' '} 
+                </strong>
+                chce kupić  
+                {' ' +customer.quantity}
+                <br />
+                <img  src={customer.needPicture} alt="customer" />
+              </p>
+            </div>
+            <img  className='picture' src={customer.picture} alt='customer'></img>
+            <button className='sellButton' onClick={e => setOrder(
+              {
+                id: customer.id,
+                name:customer.name,
+                quantity:customer.quantity,
+                needs: customer.needs,
+              }
+              )} >Sprzedaj</button>
+              </div>
+              )}
+        </div> 
     </form>
     <button className='getClientButton' onClick={getClient}>zachęć nowego klienta </button>
     <Equipment message={message}/>
-
-
-    </>
-
-      );
+  </>
+  );
 }
